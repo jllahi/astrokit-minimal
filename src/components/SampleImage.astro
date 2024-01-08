@@ -1,6 +1,8 @@
 ---
-import { Picture } from 'astro:assets'
-import localImage from '../assets/sample.webp'
+// import { Picture } from 'astro:assets'
+import { Img } from 'astro-imagetools/components'
+// import localImage from '../assets/sample.webp'
+const localImage = '/src/assets/sample.webp'
 interface Props {
 	alt: string
 }
@@ -8,7 +10,15 @@ const { alt } = Astro.props
 ---
 
 <div class="grid w-full h-full place-content-end">
-	<Picture
+	<Img
+		src={localImage}
+		alt={alt}
+		placeholder="blurred"
+		format="webp"
+		quality={50}
+	/>
+	<!-- Astro assets doesn't have blurred placeholders -->
+	<!-- <Picture
 		src={localImage}
 		alt={alt}
 		formats={['avif', 'webp']}
@@ -16,5 +26,5 @@ const { alt } = Astro.props
 		loading="eager"
 		sizes="(max-width: 1600px) 100vw, 1600px"
 		pictureAttributes={{ class: 'w-full h-full' }}
-	/>
+	/> -->
 </div>
