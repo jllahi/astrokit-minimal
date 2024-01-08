@@ -10,13 +10,7 @@ const { alt } = Astro.props
 ---
 
 <div class="grid w-full h-full place-content-end">
-	<Img
-		src={localImage}
-		alt={alt}
-		placeholder="blurred"
-		format="webp"
-		quality={50}
-	/>
+	<Img src={localImage} alt={alt} placeholder="blurred" format="webp" />
 	<!-- Astro assets doesn't have blurred placeholders -->
 	<!-- <Picture
 		src={localImage}
