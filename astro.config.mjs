@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config'
 import tailwind from '@astrojs/tailwind'
 import icon from 'astro-icon'
+import debugcss from 'astro-debugcss'
+import mkcert from 'vite-plugin-mkcert'
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,5 +14,9 @@ export default defineConfig({
 				heroicons: ['sun', 'moon'],
 			},
 		}),
+		debugcss(),
 	],
+	vite: {
+		plugins: [mkcert()],
+	},
 })
