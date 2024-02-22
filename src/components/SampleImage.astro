@@ -1,16 +1,16 @@
 ---
 import { Picture } from 'astro:assets'
-import localImage from '../assets/sample.webp'
+import localImage from '@/assets/images/sample.webp'
 interface Props {
 	alt: string
 }
 const { alt } = Astro.props
 ---
 
-<div class="grid w-full h-full place-content-end">
+<div class="grid h-full w-full place-content-end">
 	<Picture
 		src={localImage}
-		alt={alt}
+		{alt}
 		formats={['avif', 'webp']}
 		widths={[450, 800, 1200, 1600]}
 		loading="eager"

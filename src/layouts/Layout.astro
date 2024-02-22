@@ -1,15 +1,16 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
 import '@fontsource-variable/inter'
+import { ViewTransitions } from 'astro:transitions'
+import { type Props as SEOProps, SEO } from 'astro-seo'
 import TailwindIndicator from '@/components/TailwindIndicator.astro'
 import ThemeIcon from '@/components/theme/ThemeIcon.astro'
 import ThemeInit from '@/components/theme/ThemeInit.astro'
-// import colors from 'tailwindcss/colors'
 
 interface Props {
-	title?: string
+	seo?: SEOProps
 }
-const { title } = Astro.props
+
+const { seo } = Astro.props
 ---
 
 <html lang="en">
@@ -18,19 +19,31 @@ const { title } = Astro.props
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title || Astro.generator}</title>
+		<!-- <title>{title || Astro.generator}</title> -->
+		<SEO
+			title={seo?.title ?? Astro.generator}
+			description={seo?.description ??
+				'A heavily optimized description full of well-researched keywords.'}
+			openGraph={{
+				basic: {
+					title: seo?.title || 'A Very Descriptive Title',
+					type: 'website', // https://ogp.me/#types
+					image: '/open-graph.jpg',
+				},
+			}}
+		/>
 		<ThemeInit />
 		<ViewTransitions />
 	</head>
 	<body
 		class:list={[
 			'flex h-screen flex-col transition-all duration-300',
-			'text-color-primary-darker bg-color-bg-light',
-			'dark:text-color-primary-light dark:bg-color-bg-dark',
+			'bg-color-bg-light text-color-primary-darker',
+			'dark:bg-color-bg-dark dark:text-color-primary-light',
 		]}
 	>
 		<header class="fixed flex w-full flex-row justify-between p-4">
-			<a href="/"><h2 class="text-2xl font-black">{title || Astro.generator}</h2></a>
+			<a href="/"><h2 class="text-2xl font-black">{Astro.generator}</h2></a>
 			<ThemeIcon />
 		</header>
 		<slot />
