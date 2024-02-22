@@ -2,7 +2,9 @@
 import { ViewTransitions } from 'astro:transitions'
 import '@fontsource-variable/inter'
 import TailwindIndicator from '@/components/TailwindIndicator.astro'
-import ThemeToggle from '@/components/ThemeToggle.astro'
+import ThemeIcon from '@/components/theme/ThemeIcon.astro'
+import ThemeInit from '@/components/theme/ThemeInit.astro'
+// import colors from 'tailwindcss/colors'
 
 interface Props {
 	title?: string
@@ -17,33 +19,22 @@ const { title } = Astro.props
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title || Astro.generator}</title>
+		<ThemeInit />
 		<ViewTransitions />
 	</head>
 	<body
 		class:list={[
-			'flex flex-col h-screen transition-all duration-300',
-			'text-font-color bg-background-color',
-			'dark:text-font-color dark:bg-background-color',
+			'flex h-screen flex-col transition-all duration-300',
+			'text-color-primary-darker bg-color-bg-light',
+			'dark:text-color-primary-light dark:bg-color-bg-dark',
 		]}
 	>
-		<header class="flex flex-row justify-between p-4 w-full fixed">
-			<a href="/"
-				><h2 class="font-black text-2xl">{title || Astro.generator}</h2></a
-			>
-			<ThemeToggle />
+		<header class="fixed flex w-full flex-row justify-between p-4">
+			<a href="/"><h2 class="text-2xl font-black">{title || Astro.generator}</h2></a>
+			<ThemeIcon />
 		</header>
 		<slot />
 		<footer></footer>
 		<TailwindIndicator align="right" />
-		<style is:global>
-			:root {
-				--font-color: #f99abb;
-				--background-color: #0a174a;
-			}
-			html.dark {
-				--font-color: #0a174a;
-				--background-color: #f99cbd;
-			}
-		</style>
 	</body>
 </html>

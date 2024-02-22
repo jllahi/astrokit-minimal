@@ -1,15 +1,17 @@
-import { defineConfig } from 'astro/config'
 import tailwind from '@astrojs/tailwind'
-import icon from 'astro-icon'
 import debugcss from 'astro-debugcss'
-import { tailwindConfigViewer } from 'astro-tailwind-config-viewer'
+import icon from 'astro-icon'
+import { defineConfig } from 'astro/config'
 // import mkcert from 'vite-plugin-mkcert'
 import metaTags from 'astro-meta-tags'
 
 // https://astro.build/config
 export default defineConfig({
+	compressHTML: false,
 	integrations: [
-		tailwind(),
+		tailwind({
+			// applyBaseStyles: false,
+		}),
 		icon({
 			iconDir: 'src/assets/icons',
 			include: {
@@ -17,7 +19,6 @@ export default defineConfig({
 			},
 		}),
 		debugcss(),
-		tailwindConfigViewer(),
 		metaTags(),
 	],
 	// vite: {
