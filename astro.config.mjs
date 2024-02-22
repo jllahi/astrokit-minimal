@@ -8,7 +8,7 @@ import metaTags from 'astro-meta-tags'
 
 // https://astro.build/config
 export default defineConfig({
-	compressHTML: false,
+	// compressHTML: false,
 	integrations: [
 		tailwind({
 			// applyBaseStyles: false,
