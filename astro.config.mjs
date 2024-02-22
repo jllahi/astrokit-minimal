@@ -3,6 +3,7 @@ import debugcss from 'astro-debugcss'
 import icon from 'astro-icon'
 import { defineConfig } from 'astro/config'
 // import mkcert from 'vite-plugin-mkcert'
+import AstroDevtoolbarTailwind from 'astro-devtoolbar-tailwind'
 import metaTags from 'astro-meta-tags'
 
 // https://astro.build/config
@@ -20,6 +21,7 @@ export default defineConfig({
 		}),
 		debugcss(),
 		metaTags(),
+		AstroDevtoolbarTailwind(),
 	],
 	// vite: {
 	// 	plugins: [mkcert()],
