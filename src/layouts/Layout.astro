@@ -19,7 +19,6 @@ const { seo } = Astro.props
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<!-- <title>{title || Astro.generator}</title> -->
 		<SEO
 			title={seo?.title ?? Astro.generator}
 			description={seo?.description ??
