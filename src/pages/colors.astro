@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout seo={{ title: 'Colors' }}>
-	<main class="my-16 flex-grow p-4 text-5xl font-black uppercase">
+	<article class="my-16 flex-grow p-4 text-5xl font-black uppercase">
 		<h2 class="text-color-primary-darker">Primary Darker</h2>
 		<h2 class="text-color-primary-dark">Primary Dark</h2>
 		<h2 class="text-color-primary">Primary Default</h2>
@@ -22,20 +22,20 @@ import Layout from '@/layouts/Layout.astro'
 		<h2 class="text-color-accent-light">Accent Light</h2>
 		<h2 class="text-color-accent-lighter">Accent Lighter</h2>
 		<br />
-		<h2 class="text-color-black bg-color-white">Black</h2>
-		<h2 class="text-color-white bg-color-black">White</h2>
+		<h2 class="bg-color-white text-color-black">Black</h2>
+		<h2 class="bg-color-black text-color-white">White</h2>
 		<br />
-		<h2 class="text-color-success-dark bg-color-success-light">Success Dark</h2>
+		<h2 class="bg-color-success-light text-color-success-dark">Success Dark</h2>
 		<h2 class="text-color-success">Success Default</h2>
-		<h2 class="text-color-success-light bg-color-success-dark">Success Light</h2>
+		<h2 class="bg-color-success-dark text-color-success-light">Success Light</h2>
 		<br />
-		<h2 class="text-color-error-dark bg-color-error-light">Error Dark</h2>
+		<h2 class="bg-color-error-light text-color-error-dark">Error Dark</h2>
 		<h2 class="text-color-error">Error Default</h2>
-		<h2 class="text-color-error-light bg-color-error-dark">Error Light</h2>
+		<h2 class="bg-color-error-dark text-color-error-light">Error Light</h2>
 		<br />
-		<h2 class="text-color-warning-dark bg-color-warning-light">Warning Dark</h2>
+		<h2 class="bg-color-warning-light text-color-warning-dark">Warning Dark</h2>
 		<h2 class="text-color-warning">Warning Default</h2>
-		<h2 class="text-color-warning-light bg-color-warning-dark">Warning Light</h2>
+		<h2 class="bg-color-warning-dark text-color-warning-light">Warning Light</h2>
 		<br />
 		<!-- <h2 class="text-color-primary-darker">Darker</h2>
 		<h2 class="text-[var(--color-primary-darker)/20]">Darker</h2>
@@ -43,5 +43,5 @@ import Layout from '@/layouts/Layout.astro'
 		<h2 class="text-[color:var(--color-primary)]">Default</h2>
 		<h2 class="text-[color:var(--color-primary-light)]">Light</h2>
 		<h2 class="text-[color:var(--color-primary-lighter)]">Lighter</h2> -->
-	</main>
+	</article>
 </Layout>
