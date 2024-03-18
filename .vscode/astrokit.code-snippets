@@ -3,6 +3,6 @@
 		"scope": "astro",
 		"prefix": "class:list",
 		"body": ["class:list={['$1', '$2', {'$3':false}]}"],
-		"description": "Takes an array of class values and converts them into a class string."
-	}
+		"description": "Takes an array of class values and converts them into a class string.",
+	},
 }

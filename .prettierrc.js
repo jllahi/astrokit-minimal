@@ -1,14 +1,12 @@
 /** @type {import("prettier").Config} */
 export default {
-	// ...standardConfig,
 	useTabs: true,
-	tabWidth: 4,
+	tabWidth: 2,
 	singleQuote: true,
 	trailingComma: 'es5',
 	semi: false,
 	printWidth: 100,
 	astroAllowShorthand: true,
-	// pluginSearchDirs: false,
 	plugins: [
 		'prettier-plugin-astro',
 		'prettier-plugin-organize-imports',
