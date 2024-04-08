@@ -33,7 +33,7 @@
 		"@typescript-eslint/eslint-plugin": "^7.3.1",
 		"@typescript-eslint/parser": "^7.5.0",
 		"astro-debugcss": "github:jllahi/astro-debugcss",
-		"astro-eslint-parser": "^0.16.3",
+		"astro-eslint-parser": "^0.17.0",
 		"eslint": "^8.57.0",
 		"eslint-plugin-astro": "^0.31.4",
 		"eslint-plugin-jsx-a11y": "^6.8.0",
