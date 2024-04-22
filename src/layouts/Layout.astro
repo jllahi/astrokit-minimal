@@ -5,49 +5,53 @@ import { type Props as SEOProps, SEO } from 'astro-seo'
 import TailwindIndicator from '@/components/TailwindIndicator.astro'
 import ThemeIcon from '@/components/theme/ThemeIcon.astro'
 import ThemeInit from '@/components/theme/ThemeInit.astro'
+import { SITE } from '@/data/config'
 
 interface Props {
-	seo?: SEOProps
+  seo?: SEOProps
 }
 
 const { seo } = Astro.props
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<SEO
-			title={seo?.title ?? Astro.generator}
-			description={seo?.description ??
-				'A heavily optimized description full of well-researched keywords.'}
-			openGraph={{
-				basic: {
-					title: seo?.title || 'A Very Descriptive Title',
-					type: 'website', // https://ogp.me/#types
-					image: '/open-graph.jpg',
-				},
-			}}
-			{...seo}
-		/>
-		<ThemeInit />
-		<ViewTransitions />
-	</head>
-	<body
-		class:list={[
-			'flex h-screen flex-col transition-all duration-300',
-			'bg-color-bg-light text-color-primary-darker',
-			'dark:bg-color-bg-dark dark:text-color-primary-light',
-		]}
-	>
-		<header class="fixed flex w-full flex-row justify-between p-4">
-			<a href="/"><h2 class="text-2xl font-black">{Astro.generator}</h2></a>
-			<ThemeIcon />
-		</header>
-		<slot />
-		<footer></footer>
-		<TailwindIndicator align="right" />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={seo?.title || SITE.title}
+      description={seo?.description || SITE.description}
+      openGraph={{
+        basic: {
+          title: seo?.title || SITE.title,
+          type: 'website', // https://ogp.me/#types
+          image: SITE.image || '/open-graph.jpg',
+        },
+      }}
+      {...seo}
+    />
+    <ThemeInit />
+    <ViewTransitions />
+  </head>
+  <body
+    class:list={[
+      'p-layout-border flex h-svh flex-col transition-all duration-300',
+      'bg-color-bg-light text-color-black',
+      'dark:bg-color-bg-dark dark:text-color-white',
+    ]}
+  >
+    <header class="p-layout-main flex w-full flex-row justify-between">
+      <a href="/"><h2 class="text-2xl font-black">{SITE.title}</h2></a>
+      <ThemeIcon />
+    </header>
+    <main class="p-layout-main flex-grow">
+      <slot />
+    </main>
+    <footer class="p-layout-main">
+      <small>{Astro.generator}</small>
+      <TailwindIndicator align="right" />
+    </footer>
+  </body>
 </html>

@@ -1,0 +1,23 @@
+---
+import { tv } from 'tailwind-variants'
+
+const button = tv({
+  base: 'rounded-full px-3 py-1 font-semibold text-white active:opacity-80',
+  variants: {
+    color: {
+      primary: 'bg-blue-500 hover:bg-blue-700',
+      secondary: 'bg-purple-500 hover:bg-purple-700',
+      success: 'bg-green-500 hover:bg-green-700',
+    },
+    size: {
+      sm: 'px-3 py-1 text-xs',
+      md: 'px-4 py-1.5 text-sm',
+      lg: 'px-6 py-2 text-base',
+    },
+  },
+})
+
+const { color = 'primary', size = 'md' } = Astro.props
+---
+
+<button class={button({ color, size })}><slot /></button>

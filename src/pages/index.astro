@@ -1,10 +1,24 @@
 ---
-import SampleImage from '@/components/SampleImage.astro'
+// import SampleImage from '@/components/SampleImage.astro'
+// import ButtonTV from '@/components/ButtonTV.astro'
+import { SITE } from '@/data/config'
 import Layout from '@/layouts/Layout.astro'
+// import { cn } from '@/utils'
 ---
 
 <Layout>
-	<main class="flex-grow">
-		<SampleImage alt="A cat trying to catch a fish-shaped cloud." />
-	</main>
+  <section class="flex h-full items-center justify-center">
+    <h1 class="dark:text-color-accent-300 text-color-accent-800 text-6xl font-black">
+      {SITE.title}
+    </h1>
+    <!-- <p>
+      Incididunt dolor dolor nisi excepteur non. Magna magna pariatur incididunt culpa labore sit
+      laboris occaecat aliquip aliquip. Id reprehenderit dolor cillum adipisicing dolore nostrud
+      elit tempor minim qui ad dolor aliquip. Nisi consequat fugiat excepteur ullamco non nisi
+      cillum.
+    </p> -->
+    <!-- <button class={cn('w-full caption-bottom text-sm')}>Button</button> -->
+    <!-- <ButtonTV>ButtonTV</ButtonTV> -->
+    <!-- <SampleImage alt="A cat trying to catch a fish-shaped cloud." /> -->
+  </section>
 </Layout>
