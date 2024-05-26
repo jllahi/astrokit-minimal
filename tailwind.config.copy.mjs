@@ -13,6 +13,9 @@ export default {
         sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
       },
       colors: {
+        foreground: 'rgb(var(--foreground))',
+
+        'custom-pink': 'rgb(var(--color-custom-pink))',
         'color-black': colors.gray[800],
         'color-white': colors.gray[300],
         'color-bg-light': colors.indigo[50],
@@ -23,6 +26,9 @@ export default {
         'color-success': { ...colors.green, DEFAULT: colors.green[500] },
         'color-error': { ...colors.red, DEFAULT: colors.red[500] },
         'color-warning': { ...colors.yellow, DEFAULT: colors.yellow[500] },
+      },
+      backgroundColor: {
+        background: 'rgb(var(--background))',
       },
       padding: ({ theme }) => ({
         'layout-border': '0rem',

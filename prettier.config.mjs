@@ -10,7 +10,7 @@ export default {
   endOfLine: 'lf', // end_of_line = lf
   semi: false, // default: true
   singleQuote: true, // default: false
-  printWidth: 100, // default: 80
+  printWidth: 80, // default: 80
   trailingComma: 'es5',
   bracketSpacing: true,
   plugins: [

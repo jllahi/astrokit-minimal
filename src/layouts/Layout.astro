@@ -1,11 +1,14 @@
 ---
 import '@fontsource-variable/inter'
+
 import { ViewTransitions } from 'astro:transitions'
 import { type Props as SEOProps, SEO } from 'astro-seo'
-import TailwindIndicator from '@/components/TailwindIndicator.astro'
-import ThemeIcon from '@/components/theme/ThemeIcon.astro'
-import ThemeInit from '@/components/theme/ThemeInit.astro'
+
+import Footer from '@/components/Footer.astro'
+import Header from '@/components/Header.astro'
 import { SITE } from '@/data/config'
+
+import '@/globals.css'
 
 interface Props {
   seo?: SEOProps
@@ -14,11 +17,13 @@ interface Props {
 const { seo } = Astro.props
 ---
 
+<script data-astro-rerun src="/theme.js"></script>
+
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <SEO
       title={seo?.title || SITE.title}
@@ -32,26 +37,15 @@ const { seo } = Astro.props
       }}
       {...seo}
     />
-    <ThemeInit />
     <ViewTransitions />
   </head>
-  <body
-    class:list={[
-      'p-layout-border flex h-svh flex-col transition-all duration-300',
-      'bg-color-bg-light text-color-black',
-      'dark:bg-color-bg-dark dark:text-color-white',
-    ]}
-  >
-    <header class="p-layout-main flex w-full flex-row justify-between">
-      <a href="/"><h2 class="text-2xl font-black">{SITE.title}</h2></a>
-      <ThemeIcon />
-    </header>
-    <main class="p-layout-main flex-grow">
-      <slot />
-    </main>
-    <footer class="p-layout-main">
-      <small>{Astro.generator}</small>
-      <TailwindIndicator align="right" />
-    </footer>
+  <body class="bg-background min-h-screen font-sans antialiased">
+    <div class="relative flex min-h-screen flex-col">
+      <Header />
+      <main class="flex-auto">
+        <slot />
+      </main>
+      <Footer />
+    </div>
   </body>
 </html>
