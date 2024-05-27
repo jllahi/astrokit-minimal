@@ -1,5 +1,5 @@
+import getSortedPosts from '@/utils/getSortedPosts'
 import { type CollectionEntry } from 'astro:content'
-import getSortedPosts from './getSortedPosts'
 
 // const posts = await getCollection('posts')
 // let categories = getUniqueCategories(posts)

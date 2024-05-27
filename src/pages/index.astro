@@ -1,22 +1,18 @@
 ---
 // import Hero from '@/components/Hero.astro'
 import Section from '@/components/Section.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
 import { buttonVariants } from '@/components/ui/button'
 import Layout from '@/layouts/Layout.astro'
 ---
 
-<Layout seo={{ title: 'Welcome to Astro ShadCN' }}>
+<Layout seo={{ title: 'Welcome' }}>
 	<Section>
-		<div class="flex max-w-[980px] flex-col items-start gap-2">
-			<h1 class="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-				Astro Shadcn UI Template <br class="hidden sm:inline" />
-				built with Radix UI and Tailwind CSS.
-			</h1>
-			<p class="max-w-[700px] text-lg text-muted-foreground">
-				Accessible and customizable components that you can copy and paste into your apps. Free.
-				Open Source.
-			</p>
-		</div>
+		<SectionHeader
+			title="Welcome to AstroKit starter template"
+			description="Suspendisse consectetuer vulputate hac feugiat sociosqu egestas mattis nullam. Accumsan proin euismod dapibus dui vestibulum porttitor curabitur libero condimentum gravida magna."
+		/>
+
 		<div class="flex gap-4">
 			<a href="https://ui.shadcn.com" target="_blank" rel="noreferrer" class={buttonVariants()}>
 				Documentation

@@ -1,13 +1,12 @@
 ---
-import Link from '@/components/Link.astro'
 import { SITE } from '@/data/config'
 import type { HTMLAttributes } from 'astro/types'
 import { getCollection } from 'astro:content'
 // import type { Category } from '@/utils/getCategories'
-import { tv, type VariantProps } from 'tailwind-variants'
+import { buttonVariants } from '@/components/ui/button'
+import { cva, type VariantProps } from 'class-variance-authority'
 
-export const categoriesVariants = tv({
-	base: 'm-0 flex flex-wrap place-items-center gap-2 p-0',
+export const categoriesVariants = cva('m-0 flex flex-wrap place-items-center gap-2 p-0', {
 	variants: {
 		intent: {
 			outline: 'border-2 border-black text-black hover:bg-black hover:text-white',
@@ -43,14 +42,12 @@ const categories = await getCollection('categories')
 		<ul class={categoriesVariants({ intent, size, className })} data-name="ui-categories" {...rest}>
 			{categories.map((category) => (
 				<li>
-					<Link
-						size={size}
-						intent={intent}
+					<a
 						href={`/${SITE.urls.category}/${category.slug}`}
-						class="leading-10"
+						class={buttonVariants({ variant: 'secondary' })}
 					>
-						//&nbsp;{category.data.title}
-					</Link>
+						{category.data.title}
+					</a>
 				</li>
 			))}
 		</ul>

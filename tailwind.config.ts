@@ -73,7 +73,12 @@ const config = {
 			},
 		},
 	},
-	plugins: [require('tailwindcss-animate')],
+	plugins: [
+		require('tailwindcss-animate'),
+		require('@tailwindcss/typography'),
+		require('tailwindcss-full-bleed'),
+		require('tailwindcss-container-bleed'),
+	],
 } satisfies Config
 
 export default config

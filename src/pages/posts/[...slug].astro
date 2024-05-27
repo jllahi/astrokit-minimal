@@ -6,10 +6,7 @@ import TableContents from '@/components/content/TableContents.astro'
 // import Tags from '@/components/content/Tags.astro.txt'
 import { componentsEmbed } from '@/components/embed/ComponentsEmbed'
 import ImageKit from '@/components/embed/ImageKit.astro'
-// import LikeButton from '@/components/likes/like-button'
 import Article from '@/components/Article.astro'
-import Link from '@/components/Link.astro'
-import Title from '@/components/Title.astro'
 import DataDump from '@/components/utils/DataDump.astro'
 import DateFormat from '@/components/utils/DateFormat.astro'
 import SocialShare from '@/components/utils/SocialShare.astro'
@@ -17,18 +14,22 @@ import { SITE } from '@/data/config'
 import Layout from '@/layouts/Layout.astro'
 import postFilter from '@/utils/postFilter'
 import Section from '@/components/Section.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
+import PostListCategory from '@/components/content/PostListCategory.astro'
+import LikeButton from '@/components/likes/like-button'
+import { buttonVariants } from '@/components/ui/button'
 
 export async function getStaticPaths() {
-  const posts = (await getCollection('posts')).filter(postFilter)
+	const posts = (await getCollection('posts')).filter(postFilter)
 
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }))
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}))
 }
 
 interface Props {
-  post: CollectionEntry<'posts'>
+	post: CollectionEntry<'posts'>
 }
 
 const { post } = Astro.props
@@ -38,42 +39,35 @@ const category = await getEntry(post.data.category)
 ---
 
 <Layout
-  seo={{
-    title: post.data.title,
-    description: post.data.description ?? SITE.description,
-    openGraph: {
-      basic: {
-        title: post.data.title,
-        type: 'article',
-        image: post.data.image.src,
-      },
-    },
-  }}
+	seo={{
+		title: post.data.title,
+		description: post.data.description ?? SITE.description,
+		openGraph: {
+			basic: {
+				title: post.data.title,
+				type: 'article',
+				image: post.data.image.src,
+			},
+		},
+	}}
 >
-  <Section>
-    <Article>
-      <header>
-        <Title transition:name={`post-title-${post.data.title}`}>
-          {post.data.title}
-        </Title>
-        <p class="mb-8 text-xl">{post.data.description}</p>
-      </header>
-
-      <ImageKit src={post.data.image} alt={post.data.title} loading="eager" />
-
-      <!-- 
-		<Picture
-			alt={post.data.title}
-			src={post.data.image}
-			class="my-4 aspect-video w-full rounded bg-gray-200 object-cover dark:bg-gray-800"
-			transition:name={`post-image-${post.id}`}
-			loading="eager"
-			formats={['webp']}
-			widths={[540, 780, 1020]}
-			quality={88}
-		/>
--->
-      <!-- <Image
+	<Section>
+		<Article>
+			<SectionHeader title={post.data.title} description={post.data.description} />
+			<ImageKit src={post.data.image} alt={post.data.title} loading="eager" />
+			<!-- 
+        <Picture
+          alt={post.data.title}
+          src={post.data.image}
+          class="my-4 aspect-video w-full rounded bg-gray-200 object-cover dark:bg-gray-800"
+          transition:name={`post-image-${post.id}`}
+          loading="eager"
+          formats={['webp']}
+          widths={[540, 780, 1020]}
+          quality={88}
+        />
+    -->
+			<!-- <Image
 			alt={post.data.title}
 			src={post.data.image}
 			class="my-4 aspect-video w-full rounded bg-gray-200 object-cover dark:bg-gray-800"
@@ -82,32 +76,42 @@ const category = await getEntry(post.data.category)
 			loading="eager"
 		/> -->
 
-      <div class="my-2 flex flex-col justify-between md:flex-row">
-        <DateFormat date={post.data.date} />
-        <!-- <span>Reading time: {post.data.reading}</span> -->
-        <div class="my-4 flex-wrap place-items-center gap-3 p-0 md:flex">
-          <Link size="sm" intent="tag" href={`/${SITE.urls.category}/${category.slug}`}>
-            {category.data.title}
-          </Link>
+			<div class="my-2 flex flex-col justify-between md:flex-row">
+				<DateFormat date={post.data.date} />
+				{
+					// <span>Reading time: {post.data.reading}</span>
+				}
+				{
+					category && (
+						<div class="my-4 flex-wrap place-items-center gap-3 p-0 md:flex">
+							<a
+								class={buttonVariants({ variant: 'outline' })}
+								href={`/${SITE.urls.category}/${category.slug}`}
+							>
+								{category.data.title}
+							</a>
+							{
+								// <Tags tags={post.data.tags} size="sm" intent="tag" />
+							}
+						</div>
+					)
+				}
+			</div>
+			<Prose>
+				<TableContents {headings} />
+				<Content components={componentsEmbed} />
+			</Prose>
 
-          <!-- <Tags tags={post.data.tags} size="sm" intent="tag" /> -->
-        </div>
-      </div>
-      <Prose>
-        <TableContents {headings} />
-        <!-- <Content components={{ img: ImageKit, YouTube, Spotify }} /> -->
-        <Content components={componentsEmbed} />
-      </Prose>
+			<div class="mt-8 flex w-full flex-row justify-between">
+				<LikeButton slug={post.slug} client:load />
+				<SocialShare description={post.data.description} title={post.data.title} via={SITE.title} />
+			</div>
+		</Article>
+	</Section>
+	<Section>
+		<SectionHeader title="Related posts" />
+		<PostListCategory category={post.data.category.slug} />
+	</Section>
 
-      <div class="mt-8 flex w-full flex-row justify-between">
-        <!-- <LikeButton slug={post.slug} client:load /> -->
-        <SocialShare description={post.data.description} title={post.data.title} via={SITE.title} />
-      </div>
-    </Article>
-  </Section>
-  <!-- <Section>
-		<h2>Related</h2>
-		<PostListCategory category={post.data.category} />
-	</Section> -->
-  <DataDump data={post} />
+	<DataDump data={post} />
 </Layout>

@@ -1,42 +1,27 @@
 ---
 // https://docs.astro.build/en/guides/content-collections/#generating-routes-from-content
-import type { GetStaticPaths, Page } from 'astro'
-import { getCollection, type CollectionEntry } from 'astro:content'
-
 import PostList from '@/components/content/PostList.astro'
 import Section from '@/components/Section.astro'
-import Title from '@/components/Title.astro'
-// import DataDump from '@/components/utils/DataDump.astro'
-// import Pagination from '@/components/Pagination.astro'
-import { SITE } from '@/data/config'
+import SectionHeader from '@/components/SectionHeader.astro'
+import DataDump from '@/components/utils/DataDump.astro'
+import Pagination from '@/components/utils/Pagination.astro'
 import Layout from '@/layouts/Layout.astro'
-import { filterContent } from '@/utils/content'
-import postFilter from '@/utils/postFilter'
-
-export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
-  const posts = (await getCollection('posts')).filter(postFilter)
-  const filteredPosts = filterContent(posts)
-
-  return paginate(filteredPosts, { pageSize: SITE.pagination })
-}
+import { getStaticPosts as getStaticPaths } from '@/utils/paths/getStaticPosts'
+import type { Page } from 'astro'
+import type { CollectionEntry } from 'astro:content'
 
 interface Props {
-  page: Page<CollectionEntry<'posts'>>
+	page: Page<CollectionEntry<'posts'>>
 }
-
+export { getStaticPaths }
 const { page } = Astro.props
 ---
 
 <Layout seo={{ title: 'Posts', description: 'Collection of posts' }}>
-  <Section>
-    <header class="mb-8 flex flex-col">
-      <Title>The Blog</Title>
-      <p class="block max-w-[700px] text-pretty text-lg font-light text-muted-foreground">
-        Everything you need to know about websites
-      </p>
-    </header>
-    <PostList posts={page.data} />
-    <!-- <Pagination {page} /> -->
-  </Section>
-  <!-- <DataDump data={page} /> -->
+	<Section>
+		<SectionHeader title="The Blog." description="Everything you need to know about websites" />
+		<PostList posts={page.data} />
+		<Pagination {page} />
+	</Section>
+	<DataDump data={page} />
 </Layout>

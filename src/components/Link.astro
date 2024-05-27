@@ -1,25 +1,36 @@
 ---
+import { cn } from '@/lib/utils'
 import type { HTMLAttributes } from 'astro/types'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { buttonVariants } from '@/components/ui/button'
 
-const link = cva('', {
-  variants: {
-    intent: {
-      background: ['rounded-xl bg-accent/60'],
-      outline: ['rounded-xl border'],
-    },
-  },
-  // compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }],
+const linkVariants = cva('', {
+	variants: {
+		intent: {
+			background: ['rounded-xl bg-accent/60'],
+			outline: ['rounded-xl border'],
+			tag: ['border rounded'],
+		},
+	},
+	// compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }],
 })
 
 // const { size = 'md', style = 'primary', block, class: className, ...rest } = Astro.props
-export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof link> {}
+export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof linkVariants> {
+	className?: string
+}
 
 // const { intent, size, class: className, ...rest } = Astro.props
+const { class: className, href, ...rest } = Astro.props
 ---
 
+<a
+	class={cn(linkVariants({ intent: 'outline' }), className)}
+	data-name="ui-link"
+	href={href}
+	{...rest}
+>
+	<slot />
+</a>
 <!-- <a class:list={['a', link({ intent, size, className })]} data-name="ui-link" {...rest}>
   <slot />
 </a> -->
-<a class={buttonVariants({ variant: 'outline' })} data-name="ui-link"><slot /></a>

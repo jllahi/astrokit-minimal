@@ -2,33 +2,50 @@
 import { version } from 'react'
 import TailwindIndicator from './theme/TailwindIndicator.astro'
 import pkg from '../../package.json'
+import { Icon } from 'astro-icon/components'
 ---
 
 <footer class="border-t py-6 md:px-8 md:py-0">
 	<div class="container flex flex-col items-center justify-between gap-4 md:h-20 md:flex-row">
-		<p class="text-center text-sm leading-loose text-muted-foreground md:text-left">
-			Built with{' '}
+		<p
+			class="flex flex-row gap-4 text-center text-sm leading-loose text-muted-foreground md:text-left"
+		>
 			<a
 				href="https://astro.build/"
 				target="_blank"
 				rel="noreferrer"
 				class="font-medium underline underline-offset-4"
 			>
-				{Astro.generator}
-			</a> and{' '}
+				<Icon
+					name="simple-icons:astro"
+					title={`Built with ${Astro.generator}`}
+					class="align-center size-6"
+				/>
+			</a>
 			<a
-				href="https://react.dev/"
+				href="https://react.dev"
 				target="_blank"
 				rel="noreferrer"
-				class="font-medium underline underline-offset-4">React {version}</a
+				class="font-medium underline underline-offset-4"
 			>
-			and{' '}
+				<Icon
+					name="simple-icons:react"
+					title={`Hydrated with React ${version}`}
+					class="align-center size-6"
+				/>
+			</a>
 			<a
 				href="https://tailwindcss.com/"
 				target="_blank"
 				rel="noreferrer"
-				class="font-medium underline underline-offset-4">Tailwind {pkg.dependencies.tailwindcss}</a
+				class="font-medium underline underline-offset-4"
 			>
+				<Icon
+					name="simple-icons:tailwindcss"
+					title={`Styled with Tailwind ${pkg.dependencies.tailwindcss}`}
+					class="align-center size-6"
+				/>
+			</a>
 		</p>
 	</div>
 	<TailwindIndicator align="right" />

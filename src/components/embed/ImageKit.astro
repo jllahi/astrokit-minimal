@@ -25,11 +25,11 @@ const { src, alt, loading = 'lazy', ...attrs } = Astro.props
 	width="720"
 	transition:name={`post-image-${src}`}
 	loading="eager"
-/> --><!-- <Image src={src} alt={alt} {...attrs} /> -->
+/> --><!-- <Image src={src} alt={alt} {...attrs} /> --><!-- <div class="relative -start-8 w-screen"> -->
 <Picture
 	{alt}
 	{src}
-	class="my-4 aspect-video w-full rounded bg-gray-200 object-cover dark:bg-gray-800"
+	class="my-4 aspect-video w-full rounded bg-muted object-cover"
 	transition:name={`image-${src}`}
 	{loading}
 	formats={['webp']}

@@ -1,11 +1,13 @@
 ---
 import Hero from '@/components/Hero.astro'
 import Section from '@/components/Section.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
 import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout seo={{ title: 'Hero' }}>
-	<Section>
-		<Hero intent={'background'} />
-	</Section>
+  <Section>
+    <SectionHeader title="This is the Heroes page." />
+    <Hero intent={'background'} />
+  </Section>
 </Layout>

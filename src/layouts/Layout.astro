@@ -26,6 +26,7 @@ const { seo } = Astro.props
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<SEO
+			titleTemplate={`%s | ${SITE.title}`}
 			title={seo?.title || SITE.title}
 			description={seo?.description || SITE.description}
 			openGraph={{

@@ -3,7 +3,7 @@ import Categories from '@/components/content/Categories.astro'
 import PostList from '@/components/content/PostList.astro'
 import Divider from '@/components/Divider.astro'
 import Section from '@/components/Section.astro'
-import Title from '@/components/Title.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
 import Pagination from '@/components/utils/Pagination.astro'
 import { SITE } from '@/data/config'
 import Layout from '@/layouts/Layout.astro'
@@ -45,10 +45,7 @@ const { page, categoryName, categoryDescription } = Astro.props
 
 <Layout seo={{ title: 'Category ' + categoryName }}>
 	<Section>
-		<header class="mb-2 flex flex-col">
-			<Title>{categoryName}</Title>
-			<p class="mb-8 text-xl">{categoryDescription}</p>
-		</header>
+		<SectionHeader title={categoryName} description={categoryDescription} />
 		<PostList posts={page.data} />
 		<Pagination {page} />
 	</Section>

@@ -1,22 +1,31 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import { tv, type VariantProps } from 'tailwind-variants'
+import { cva, type VariantProps } from 'class-variance-authority'
 
-export const title = tv({
-	base: 'font-heading mb-2 text-3xl font-black lg:text-4xl',
+export const titleVariants = cva('', {
 	variants: {
-		intent: {},
-		size: {},
+		intent: {
+			background: ['rounded-xl bg-accent/60'],
+			outline: ['rounded-xl border'],
+		},
 	},
-	defaultVariants: {},
-	compoundVariants: [{}],
 })
 
-export interface Props extends HTMLAttributes<'h1'>, VariantProps<typeof title> {}
+export interface Props extends HTMLAttributes<'h1'>, VariantProps<typeof titleVariants> {
+	title: string
+}
 
-const { intent, size, class: className, ...rest } = Astro.props
+// const { intent, size, class: className, ...rest } = Astro.props
+const { title, ...rest } = Astro.props
 ---
 
-<h1 class={title({ intent, size, className })} data-name="ui-title" {...rest}>
+<!-- <h1 class={title({ intent, size, className })} data-name="ui-title" {...rest}>
+  <slot />
+</h1> -->
+<h1
+	class="font-heading text-pretty text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl"
+	transition:name={`section-title${title}`}
+	{...rest}
+>
 	<slot />
 </h1>
