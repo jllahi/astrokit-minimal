@@ -1,4 +1,5 @@
 ---
+// import Hero from '@/components/Hero.astro'
 import Section from '@/components/Section.astro'
 import { buttonVariants } from '@/components/ui/button'
 import Layout from '@/layouts/Layout.astro'
@@ -7,17 +8,24 @@ import Layout from '@/layouts/Layout.astro'
 <Layout seo={{ title: 'Welcome to Astro ShadCN' }}>
   <Section>
     <div class="flex max-w-[980px] flex-col items-start gap-2">
-      <h1 class="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
+      <h1
+        class="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl"
+      >
         Astro Shadcn UI Template <br class="hidden sm:inline" />
         built with Radix UI and Tailwind CSS.
       </h1>
-      <p class="text-muted-foreground max-w-[700px] text-lg">
-        Accessible and customizable components that you can copy and paste into your apps. Free.
-        Open Source.
+      <p class="max-w-[700px] text-lg text-muted-foreground">
+        Accessible and customizable components that you can copy and paste into
+        your apps. Free. Open Source.
       </p>
     </div>
     <div class="flex gap-4">
-      <a href="https://ui.shadcn.com" target="_blank" rel="noreferrer" class={buttonVariants()}>
+      <a
+        href="https://ui.shadcn.com"
+        target="_blank"
+        rel="noreferrer"
+        class={buttonVariants()}
+      >
         Documentation
       </a>
       <a
@@ -30,4 +38,7 @@ import Layout from '@/layouts/Layout.astro'
       </a>
     </div>
   </Section>
+  <!-- <Section>
+    <Hero intent={'background'} />
+  </Section> -->
 </Layout>

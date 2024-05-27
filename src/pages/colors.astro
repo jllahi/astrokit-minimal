@@ -17,14 +17,59 @@ import Layout from '@/layouts/Layout.astro'
 
 <Layout seo={{ title: 'Colors' }}>
   <Section>
-    <article class="my-8 flex-grow p-4 text-5xl font-black uppercase">
-      <h2 class="bg-background/20 text-foreground/20">Primary Darker</h2>
-      <h2 class="text-primary/40">Primary Dark</h2>
-      <h2 class="text-primary/60">Primary Default</h2>
-      <h2 class="text-primary/80">Primary Light</h2>
-      <h2 class="bg-background text-foreground/100">Primary Lighter</h2>
-      <br />
-      <h2 class="text-primary/20">Primary Darker</h2>
+    <!-- <article class="my-8 flex-grow p-4 text-5xl font-black"> -->
+    <h1
+      class="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl"
+    >
+      This is the Colors page.
+    </h1>
+    <div
+      class="my-4 grid grid-cols-1 flex-col gap-6 md:grid-cols-2 md:flex-row md:gap-12 lg:grid-cols-3"
+    >
+      <div class="group bg-background">
+        <h2 class="text-foreground/20">Foreground 20</h2>
+        <h2 class="text-foreground/40">Foreground 40</h2>
+        <h2 class="text-foreground/60">Foreground 60</h2>
+        <h2 class="text-foreground/80">Foreground 80</h2>
+        <h2 class="text-foreground/100">Foreground 100</h2>
+      </div>
+      <div class="group bg-primary">
+        <h2 class="text-primary-foreground/20">Primary 20</h2>
+        <h2 class="text-primary-foreground/40">Primary 40</h2>
+        <h2 class="text-primary-foreground/60">Primary 60</h2>
+        <h2 class="text-primary-foreground/80">Primary 80</h2>
+        <h2 class="text-primary-foreground/100">Primary 100</h2>
+      </div>
+      <div class="group bg-secondary">
+        <h2 class="text-secondary-foreground/20">Secondary 20</h2>
+        <h2 class="text-secondary-foreground/40">Secondary 40</h2>
+        <h2 class="text-secondary-foreground/60">Secondary 60</h2>
+        <h2 class="text-secondary-foreground/80">Secondary 80</h2>
+        <h2 class="text-secondary-foreground/100">Secondary 100</h2>
+      </div>
+      <div class="group bg-muted">
+        <h2 class="text-muted-foreground/20">Muted 20</h2>
+        <h2 class="text-muted-foreground/40">Muted 40</h2>
+        <h2 class="text-muted-foreground/60">Muted 60</h2>
+        <h2 class="text-muted-foreground/80">Muted 80</h2>
+        <h2 class="text-muted-foreground/100">Muted 100</h2>
+      </div>
+      <div class="group bg-accent">
+        <h2 class="text-accent-foreground/20">Accent 20</h2>
+        <h2 class="text-accent-foreground/40">Accent 40</h2>
+        <h2 class="text-accent-foreground/60">Accent 60</h2>
+        <h2 class="text-accent-foreground/80">Accent 80</h2>
+        <h2 class="text-accent-foreground/100">Accent 100</h2>
+      </div>
+      <div class="group bg-destructive">
+        <h2 class="text-destructive-foreground/20">Destructive 20</h2>
+        <h2 class="text-destructive-foreground/40">Destructive 40</h2>
+        <h2 class="text-destructive-foreground/60">Destructive 60</h2>
+        <h2 class="text-destructive-foreground/80">Destructive 80</h2>
+        <h2 class="text-destructive-foreground/100">Destructive 100</h2>
+      </div>
+    </div>
+    <!-- <h2 class="text-primary/20">Primary Darker</h2>
       <h2 class="text-primary/40">Primary Dark</h2>
       <h2 class="text-primary/60">Primary Default</h2>
       <h2 class="text-primary/80">Primary Light</h2>
@@ -56,13 +101,22 @@ import Layout from '@/layouts/Layout.astro'
       <h2 class="bg-color-warning-light text-color-warning-dark">Warning Dark</h2>
       <h2 class="text-color-warning">Warning Default</h2>
       <h2 class="bg-color-warning-dark text-color-warning-light">Warning Light</h2>
-      <br />
-      <!-- <h2 class="text-color-primary-darker">Darker</h2>
+      <br /> -->
+    <!-- <h2 class="text-color-primary-darker">Darker</h2>
 		<h2 class="text-[var(--color-primary-darker)/20]">Darker</h2>
 		<h2 class="text-[color:var(--color-primary-dark)]">Dark</h2>
 		<h2 class="text-[color:var(--color-primary)]">Default</h2>
 		<h2 class="text-[color:var(--color-primary-light)]">Light</h2>
 		<h2 class="text-[color:var(--color-primary-lighter)]">Lighter</h2> -->
-    </article>
+    <!-- </article> -->
   </Section>
 </Layout>
+
+<style>
+  .group {
+    @apply text-3xl font-black uppercase;
+  }
+  .group h2 {
+    @apply px-2 py-1;
+  }
+</style>

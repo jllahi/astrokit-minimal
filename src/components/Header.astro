@@ -1,20 +1,29 @@
 ---
 import { buttonVariants } from '@/components/ui/button'
-import { ModeToggle } from '@/components/ModeToggle'
+import { ModeToggle } from '@/components/theme/ModeToggle'
 import { SITE } from '@/data/config'
 ---
 
 <header
-  class="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
+  class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
 >
-  <div class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+  <div
+    class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0"
+  >
     <div class="flex w-full gap-6 md:gap-10">
       <a href="/" class="flex items-center space-x-2">
         <span class="inline-block font-black uppercase">{SITE.title}</span>
       </a>
       <nav>
-        <a href="/about" class={buttonVariants({ variant: 'ghost' })}> About </a>
-        <a href="/colors" class={buttonVariants({ variant: 'ghost' })}> Colors </a>
+        <a href="/about" class={buttonVariants({ variant: 'ghost' })}>
+          About
+        </a>
+        <a href="/heroes" class={buttonVariants({ variant: 'ghost' })}>
+          Hero
+        </a>
+        <a href="/colors" class={buttonVariants({ variant: 'ghost' })}>
+          Colors
+        </a>
       </nav>
       <div class="flex flex-1 items-center justify-end space-x-4">
         <nav class="flex items-center gap-2 space-x-1">
