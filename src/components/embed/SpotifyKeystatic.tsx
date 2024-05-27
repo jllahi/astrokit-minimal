@@ -4,11 +4,7 @@ interface Props {
 	height?: number
 }
 
-export default function SpotifyKeystatic({
-	title,
-	playlist,
-	height = 372
-}: Props) {
+export default function SpotifyKeystatic({ title, playlist, height = 372 }: Props) {
 	return (
 		<iframe
 			className="rounded-xl"

@@ -11,7 +11,7 @@ import { SITE } from '@/data/config'
 import '@/globals.css'
 
 interface Props {
-  seo?: SEOProps
+	seo?: SEOProps
 }
 
 const { seo } = Astro.props
@@ -20,32 +20,32 @@ const { seo } = Astro.props
 <script is:inline data-astro-rerun src="/theme.js"></script>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <SEO
-      title={seo?.title || SITE.title}
-      description={seo?.description || SITE.description}
-      openGraph={{
-        basic: {
-          title: seo?.title || SITE.title,
-          type: 'website', // https://ogp.me/#types
-          image: SITE.image || '/open-graph.jpg',
-        },
-      }}
-      {...seo}
-    />
-    <ViewTransitions />
-  </head>
-  <body class="min-h-screen bg-background font-sans antialiased">
-    <div class="relative flex min-h-screen flex-col">
-      <Header />
-      <main class="flex-auto">
-        <slot />
-      </main>
-      <Footer />
-    </div>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<SEO
+			title={seo?.title || SITE.title}
+			description={seo?.description || SITE.description}
+			openGraph={{
+				basic: {
+					title: seo?.title || SITE.title,
+					type: 'website', // https://ogp.me/#types
+					image: SITE.image || '/open-graph.jpg',
+				},
+			}}
+			{...seo}
+		/>
+		<ViewTransitions />
+	</head>
+	<body class="min-h-screen bg-background font-sans antialiased">
+		<div class="relative flex min-h-screen flex-col">
+			<Header />
+			<main class="flex-auto">
+				<slot />
+			</main>
+			<Footer />
+		</div>
+	</body>
 </html>

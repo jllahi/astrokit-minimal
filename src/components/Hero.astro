@@ -7,74 +7,70 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import type { HTMLAttributes } from 'astro/types'
 
 const hero = cva('', {
-  variants: {
-    intent: {
-      background: ['rounded-xl bg-accent/60'],
-      outline: ['rounded-xl border'],
-    },
-  },
-  // compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }],
+	variants: {
+		intent: {
+			background: ['rounded-xl bg-accent/60'],
+			outline: ['rounded-xl border'],
+		},
+	},
+	// compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }],
 })
 
-export interface Props
-  extends HTMLAttributes<'div'>,
-    VariantProps<typeof hero> {}
+export interface Props extends HTMLAttributes<'div'>, VariantProps<typeof hero> {}
 
 const { intent = 'outline' } = Astro.props
 ---
 
 <section class="bg-background">
-  <div
-    class={cn(
-      hero({ intent }),
-      'mx-auto grid w-full max-w-screen-2xl place-items-center items-center p-8 lg:grid-cols-12 lg:gap-8 lg:p-16 xl:gap-0'
-    )}
-  >
-    <div class="mr-auto place-self-center lg:col-span-7">
-      <h1
-        class="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight text-foreground md:text-5xl xl:text-6xl"
-      >
-        Payments tool for software companies
-      </h1>
-      <p
-        class="mb-6 max-w-2xl font-light text-foreground/80 md:text-lg lg:mb-8 lg:text-xl"
-      >
-        From checkout to global sales tax compliance, companies around the world
-        use Flowbite to simplify their payment stack.
-      </p>
-      <a
-        href="/"
-        class="mb-3 inline-flex items-center justify-center rounded-lg bg-primary/90 px-5 py-3 text-center text-base font-medium text-accent hover:bg-primary/80 focus:ring-4 focus:ring-primary/30 dark:focus:ring-primary/90 sm:mr-3"
-      >
-        Get started
-        <svg
-          class="-mr-1 ml-2 size-5"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-            clip-rule="evenodd"></path>
-        </svg>
-      </a>
-      <a
-        href="/"
-        class="inline-flex items-center justify-center rounded-lg border border-foreground/30 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-      >
-        Speak to Sales
-      </a>
-    </div>
-    <div class="hidden lg:col-span-5 lg:mt-0 lg:flex">
-      <Image
-        src={imageHero}
-        alt="Mockup of phones"
-        width={480}
-        height={360}
-        loading={'eager'}
-        format={'avif'}
-      />
-    </div>
-  </div>
+	<div
+		class={cn(
+			hero({ intent }),
+			'mx-auto grid w-full max-w-screen-2xl place-items-center items-center p-8 lg:grid-cols-12 lg:gap-8 lg:p-16 xl:gap-0'
+		)}
+	>
+		<div class="mr-auto place-self-center lg:col-span-7">
+			<h1
+				class="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight text-foreground md:text-5xl xl:text-6xl"
+			>
+				Payments tool for software companies
+			</h1>
+			<p class="mb-6 max-w-2xl font-light text-foreground/80 md:text-lg lg:mb-8 lg:text-xl">
+				From checkout to global sales tax compliance, companies around the world use Flowbite to
+				simplify their payment stack.
+			</p>
+			<a
+				href="/"
+				class="mb-3 inline-flex items-center justify-center rounded-lg bg-primary/90 px-5 py-3 text-center text-base font-medium text-accent hover:bg-primary/80 focus:ring-4 focus:ring-primary/30 dark:focus:ring-primary/90 sm:mr-3"
+			>
+				Get started
+				<svg
+					class="-mr-1 ml-2 size-5"
+					fill="currentColor"
+					viewBox="0 0 20 20"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						fill-rule="evenodd"
+						d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+						clip-rule="evenodd"></path>
+				</svg>
+			</a>
+			<a
+				href="/"
+				class="inline-flex items-center justify-center rounded-lg border border-foreground/30 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+			>
+				Speak to Sales
+			</a>
+		</div>
+		<div class="hidden lg:col-span-5 lg:mt-0 lg:flex">
+			<Image
+				src={imageHero}
+				alt="Mockup of phones"
+				width={480}
+				height={360}
+				loading={'eager'}
+				format={'avif'}
+			/>
+		</div>
+	</div>
 </section>

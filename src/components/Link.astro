@@ -3,33 +3,33 @@ import type { HTMLAttributes } from 'astro/types'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 export const link = tv({
-	base: 'transition-all duration-300 ease-in-out place-content-center p-1 font-logo uppercase',
+	base: 'font-logo place-content-center p-1 uppercase transition-all duration-300 ease-in-out',
 	variants: {
 		intent: {
-			outline: 'border border-black hover:bg-black text-black hover:text-white',
+			outline: 'border border-black text-black hover:bg-black hover:text-white',
 			primary: [
-				'border border-black hover:bg-black text-black hover:text-white',
-				'border dark:text-white dark:border-color-white dark:hover:bg-color-white dark:hover:text-black'
+				'border border-black text-black hover:bg-black hover:text-white',
+				'dark:border-color-white dark:hover:bg-color-white border dark:text-white dark:hover:text-black',
 			],
 			inverted: [
-				'border border-black bg-color-black hover:bg-color-white text-color-white hover:text-color-black',
-				'dark:border-color-white dark:bg-color-white dark:hover:bg-color-black dark:text-color-black dark:hover:text-color-white'
+				'bg-color-black hover:bg-color-white text-color-white hover:text-color-black border border-black',
+				'dark:border-color-white dark:bg-color-white dark:hover:bg-color-black dark:text-color-black dark:hover:text-color-white',
 			],
 			tag: [
-				'border-color-black bg-color-white text-black border no-underline px-2 hover:text-white hover:bg-color-black',
-				'dark:border-color-white dark:bg-color-black dark:text-white dark:hover:text-black dark:hover:bg-color-white'
-			]
+				'border-color-black bg-color-white hover:bg-color-black border px-2 text-black no-underline hover:text-white',
+				'dark:border-color-white dark:bg-color-black dark:hover:bg-color-white dark:text-white dark:hover:text-black',
+			],
 		},
 		size: {
-			sm: 'pb-1 px-2 text-xs font-bold',
-			md: 'py-2 px-3 gap-2 text-lg',
-			lg: 'py-3 px-4 gap-4 text-xl'
-		}
+			sm: 'px-2 pb-1 text-xs font-bold',
+			md: 'gap-2 px-3 py-2 text-lg',
+			lg: 'gap-4 px-4 py-3 text-xl',
+		},
 	},
 	defaultVariants: {
 		size: 'md',
-		intent: 'primary'
-	}
+		intent: 'primary',
+	},
 	// compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }]
 })
 
