@@ -1,0 +1,55 @@
+---
+import Link from '@/components/Link.astro'
+import { SITE } from '@/data/config'
+import type { Tag } from '@/utils/getUniqueTags.ts.txt'
+import { slugifyStr } from '@/utils/slugify'
+import type { HTMLAttributes } from 'astro/types'
+import { tv, type VariantProps } from 'tailwind-variants'
+
+export const tagsVariants = tv({
+  base: 'my-4 flex flex-wrap place-items-center gap-2 p-0',
+  variants: {
+    intent: {
+      outline: '',
+      primary: '',
+      // inverted: '',
+      tag: '',
+    },
+    size: {
+      sm: 'my-2 gap-2 text-xs md:gap-3',
+      md: 'my-4 gap-3 text-base md:gap-4',
+      lg: 'my-8 gap-4 text-xl md:gap-8',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+    intent: 'tag',
+  },
+  // compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }]
+})
+
+export interface Props extends HTMLAttributes<'ul'>, VariantProps<typeof tagsVariants> {
+  tags: Tag[] | string[] | undefined
+}
+const { tags, intent, size, class: className, ...rest } = Astro.props
+// <Icon name="ri:price-tag-3-line" title="Tags" class="align-center mb-1 inline size-4" />
+---
+
+{
+  tags && (
+    <ul class={tagsVariants({ intent, size, className })} data-name="ui-tags" {...rest}>
+      {tags.map((tag) => (
+        <li>
+          <Link
+            size={size}
+            intent={intent}
+            href={`/${SITE.urls.tags}/${typeof tag === 'string' ? slugifyStr(tag) : tag.tag}`}
+            class="leading-10"
+          >
+            #&nbsp;{typeof tag === 'string' ? tag : tag.tagName}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+}

@@ -1,0 +1,62 @@
+---
+import Categories from '@/components/content/Categories.astro'
+import PostList from '@/components/content/PostList.astro'
+import Divider from '@/components/Divider.astro'
+import Section from '@/components/Section.astro'
+import Title from '@/components/Title.astro'
+import Pagination from '@/components/utils/Pagination.astro'
+import { SITE } from '@/data/config'
+import Layout from '@/layouts/Layout.astro'
+import getPostsByCategory from '@/utils/getPostsByCategory'
+import type { GetStaticPaths, Page } from 'astro'
+import { getCollection, type CollectionEntry } from 'astro:content'
+
+interface Props {
+  page: Page<CollectionEntry<'posts'>>
+  categoryName: string
+  categoryDescription: string
+}
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const allPosts = await getCollection('posts')
+  const allCategories = await getCollection('categories')
+  // const allCategories = getUniqueCategories(allPosts)
+
+  return allCategories.flatMap((category) => {
+    const filteredPosts = getPostsByCategory(allPosts, category.slug)
+
+    return paginate(filteredPosts, {
+      params: { category: category.slug },
+      props: {
+        categoryName: category.data.title,
+        categoryDescription: category.data.description,
+      },
+      pageSize: SITE.pagination,
+    })
+  })
+}
+
+// const posts = await getCollection('posts')
+// const categories = getUniqueCategories(posts)
+const { page, categoryName, categoryDescription } = Astro.props
+
+// console.dir(allCategories)
+---
+
+<Layout seo={{ title: 'Category ' + categoryName }}>
+  <Section>
+    <header class="mb-2 flex flex-col">
+      <Title>{categoryName}</Title>
+      <p class="mb-8 text-xl">{categoryDescription}</p>
+    </header>
+    <PostList posts={page.data} />
+    <Pagination {page} />
+  </Section>
+
+  <Divider />
+
+  <Section>
+    <h2 class="text-3xl font-black">Other categories</h2>
+    <Categories />
+  </Section>
+</Layout>

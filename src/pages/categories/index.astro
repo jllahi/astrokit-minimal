@@ -1,0 +1,21 @@
+---
+import Categories from '@/components/content/Categories.astro'
+import Section from '@/components/Section.astro'
+import Title from '@/components/Title.astro'
+import Layout from '@/layouts/Layout.astro'
+
+// const posts = await getCollection('posts')
+// let categories = getUniqueCategories(posts)
+// let categories = await getCategories()
+// const categories = await getCollection('categories')
+// console.dir(categories)
+---
+
+<Layout seo={{ title: 'Categories' }}>
+  <main>
+    <Section>
+      <Title>Categories</Title>
+      <Categories size="lg" />
+    </Section>
+  </main>
+</Layout>

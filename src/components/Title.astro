@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { tv, type VariantProps } from 'tailwind-variants'
+
+export const title = tv({
+  base: 'font-heading mb-2 text-3xl font-black lg:text-4xl',
+  variants: {
+    intent: {},
+    size: {},
+  },
+  defaultVariants: {},
+  compoundVariants: [{}],
+})
+
+export interface Props extends HTMLAttributes<'h1'>, VariantProps<typeof title> {}
+
+const { intent, size, class: className, ...rest } = Astro.props
+---
+
+<h1 class={title({ intent, size, className })} data-name="ui-title" {...rest}>
+  <slot />
+</h1>
