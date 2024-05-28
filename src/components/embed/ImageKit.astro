@@ -18,14 +18,6 @@ interface Props {
 const { src, alt, loading = 'lazy', ...attrs } = Astro.props
 ---
 
-<!-- <ImageCustom
-	{alt}
-	{src}
-	class="my-4 aspect-video w-full rounded bg-gray-200 object-cover dark:bg-gray-800"
-	width="720"
-	transition:name={`post-image-${src}`}
-	loading="eager"
-/> --><!-- <Image src={src} alt={alt} {...attrs} /> --><!-- <div class="relative -start-8 w-screen"> -->
 <Picture
 	{alt}
 	{src}
@@ -37,3 +29,37 @@ const { src, alt, loading = 'lazy', ...attrs } = Astro.props
 	quality={88}
 	{...attrs}
 />
+
+{
+	// 	<ImageCustom
+	// 	{alt}
+	// 	{src}
+	// 	class="my-4 aspect-video w-full rounded bg-gray-200 object-cover dark:bg-gray-800"
+	// 	width="720"
+	// 	transition:name={`post-image-${src}`}
+	// 	loading="eager"
+	// />
+}
+{/* <Image src={src} alt={alt} {...attrs} /> --><!-- <div class="relative -start-8 w-screen"> */}
+{
+	// <Picture
+	//   alt={post.data.title}
+	//   src={post.data.image}
+	//   class="my-4 aspect-video w-full rounded bg-gray-200 object-cover dark:bg-gray-800"
+	//   transition:name={`post-image-${post.id}`}
+	//   loading="eager"
+	//   formats={['webp']}
+	//   widths={[540, 780, 1020]}
+	//   quality={88}
+	// />
+}
+{
+	/* <Image
+			alt={post.data.title}
+			src={post.data.image}
+			class="my-4 aspect-video w-full rounded bg-gray-200 object-cover dark:bg-gray-800"
+			width="720"
+			transition:name={`post-image-${post.data.title}`}
+			loading="eager"
+		/> */
+}

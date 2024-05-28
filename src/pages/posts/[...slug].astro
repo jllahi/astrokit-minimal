@@ -56,26 +56,6 @@ const category = await getEntry(post.data.category)
 		<Article>
 			<SectionHeader title={post.data.title} description={post.data.description} />
 			<ImageKit src={post.data.image} alt={post.data.title} loading="eager" />
-			<!-- 
-        <Picture
-          alt={post.data.title}
-          src={post.data.image}
-          class="my-4 aspect-video w-full rounded bg-gray-200 object-cover dark:bg-gray-800"
-          transition:name={`post-image-${post.id}`}
-          loading="eager"
-          formats={['webp']}
-          widths={[540, 780, 1020]}
-          quality={88}
-        />
-    -->
-			<!-- <Image
-			alt={post.data.title}
-			src={post.data.image}
-			class="my-4 aspect-video w-full rounded bg-gray-200 object-cover dark:bg-gray-800"
-			width="720"
-			transition:name={`post-image-${post.data.title}`}
-			loading="eager"
-		/> -->
 
 			<div class="my-2 flex flex-row justify-between">
 				<DateFormat date={post.data.date} />
@@ -83,27 +63,15 @@ const category = await getEntry(post.data.category)
 					// <span>Reading time: {post.data.reading}</span>
 				}
 				{
-					category.id && (
+					category && (
 						<div class="my-4 flex-wrap place-items-center gap-3 p-0 md:flex">
 							<CategoryCard category={category} client:load />
 						</div>
 					)
 				}
-				<!-- {
-					category && (
-						<div class="my-4 flex-wrap place-items-center gap-3 p-0 md:flex">
-							<a
-								class={buttonVariants({ variant: 'outline', size: 'xs' })}
-								href={`/${SITE.urls.category}/${category.slug}`}
-							>
-								{category.data.title}
-							</a>
-							{
-								// <Tags tags={post.data.tags} size="sm" intent="tag" />
-							}
-						</div>
-					)
-				} -->
+				{
+					// <Tags tags={post.data.tags} size="sm" intent="tag" />
+				}
 			</div>
 			<Prose>
 				<TableContents {headings} />
