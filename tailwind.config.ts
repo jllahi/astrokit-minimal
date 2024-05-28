@@ -76,8 +76,9 @@ const config = {
 	plugins: [
 		require('tailwindcss-animate'),
 		require('@tailwindcss/typography'),
-		require('tailwindcss-full-bleed'),
-		require('tailwindcss-container-bleed'),
+		require('tailwindcss-intersect'),
+		// require('tailwindcss-full-bleed'),
+		// require('tailwindcss-container-bleed'),
 	],
 } satisfies Config
 

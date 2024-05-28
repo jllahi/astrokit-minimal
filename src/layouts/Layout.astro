@@ -18,7 +18,11 @@ const { seo } = Astro.props
 ---
 
 <script is:inline data-astro-rerun src="/theme.js"></script>
+<script>
+	import Observer from 'tailwindcss-intersect'
 
+	Observer.start()
+</script>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
