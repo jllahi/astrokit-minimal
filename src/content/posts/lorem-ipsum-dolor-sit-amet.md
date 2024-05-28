@@ -3,7 +3,7 @@ title: Lorem ipsum dolor sit amet
 description: Sociosqu nec torquent libero nullam aenean risus. Sollicitudin dolor consectetuer auctor integer nec lacinia condimentum.
 date: 2024-04-08
 image: ../../assets/images/phone-mockup.png
-category: vitae
+category: astro
 featured: true
 draft: true
 ---

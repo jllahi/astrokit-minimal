@@ -4,6 +4,7 @@ import { ModeToggle } from '@/components/theme/ModeToggle'
 import { SITE } from '@/data/config'
 import MenuMobile from './MenuMobile'
 import { cn } from '@/lib/utils'
+import MenuDesktop from './MenuDesktop.astro'
 // import { Icon } from 'astro-icon/components'
 ---
 
@@ -15,12 +16,13 @@ import { cn } from '@/lib/utils'
 			<a href="/" class="flex items-center space-x-2">
 				<span class="inline-block font-black uppercase">{SITE.title}</span>
 			</a>
-			<nav class="hidden md:block">
+			<MenuDesktop />
+			<!-- <nav class="hidden md:block">
 				<a href="/about" class={buttonVariants({ variant: 'ghost' })}> About </a>
 				<a href="/heroes" class={buttonVariants({ variant: 'ghost' })}> Hero </a>
 				<a href="/colors" class={buttonVariants({ variant: 'ghost' })}> Colors </a>
 				<a href="/posts" class={buttonVariants({ variant: 'ghost' })}> Posts </a>
-			</nav>
+			</nav> -->
 			<div class="flex flex-1 items-center justify-end space-x-4">
 				<nav class="flex items-center gap-2 space-x-1">
 					<a

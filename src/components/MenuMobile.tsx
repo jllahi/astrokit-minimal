@@ -1,9 +1,10 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { SITE } from '@/data/config'
 import { navMenu } from '@/data/navigation'
+import { cn } from '@/lib/utils'
 import { AlignRight } from 'lucide-react'
 import React from 'react'
-import { Button } from './ui/button'
+import { Button, buttonVariants } from './ui/button'
 import { Separator } from './ui/separator'
 
 export default function MenuMobile() {
@@ -31,7 +32,10 @@ export default function MenuMobile() {
 									item.href && (
 										<li key={item.title}>
 											{/* <Button asChild variant="ghost"> */}
-											<a href={item.href} className="text-base font-black uppercase">
+											<a
+												href={item.href}
+												className={cn(buttonVariants({ variant: 'link' }), 'px-0')}
+											>
 												{item.title}
 											</a>
 											{/* </Button> */}

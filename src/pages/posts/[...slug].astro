@@ -17,7 +17,8 @@ import Section from '@/components/Section.astro'
 import SectionHeader from '@/components/SectionHeader.astro'
 import PostListCategory from '@/components/content/PostListCategory.astro'
 import LikeButton from '@/components/likes/like-button'
-import { buttonVariants } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
+import CategoryCard from '@/components/CategoryCard'
 
 export async function getStaticPaths() {
 	const posts = (await getCollection('posts')).filter(postFilter)
@@ -76,16 +77,23 @@ const category = await getEntry(post.data.category)
 			loading="eager"
 		/> -->
 
-			<div class="my-2 flex flex-col justify-between md:flex-row">
+			<div class="my-2 flex flex-row justify-between">
 				<DateFormat date={post.data.date} />
 				{
 					// <span>Reading time: {post.data.reading}</span>
 				}
 				{
+					category.id && (
+						<div class="my-4 flex-wrap place-items-center gap-3 p-0 md:flex">
+							<CategoryCard category={category} client:load />
+						</div>
+					)
+				}
+				<!-- {
 					category && (
 						<div class="my-4 flex-wrap place-items-center gap-3 p-0 md:flex">
 							<a
-								class={buttonVariants({ variant: 'outline' })}
+								class={buttonVariants({ variant: 'outline', size: 'xs' })}
 								href={`/${SITE.urls.category}/${category.slug}`}
 							>
 								{category.data.title}
@@ -95,19 +103,20 @@ const category = await getEntry(post.data.category)
 							}
 						</div>
 					)
-				}
+				} -->
 			</div>
 			<Prose>
 				<TableContents {headings} />
 				<Content components={componentsEmbed} />
 			</Prose>
 
-			<div class="mt-8 flex w-full flex-row justify-between">
+			<div class="mt-2 flex w-full flex-row justify-between">
 				<LikeButton slug={post.slug} client:load />
 				<SocialShare description={post.data.description} title={post.data.title} via={SITE.title} />
 			</div>
 		</Article>
 	</Section>
+	<Separator />
 	<Section>
 		<SectionHeader title="Related posts" />
 		<PostListCategory category={post.data.category.slug} />

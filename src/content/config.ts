@@ -54,14 +54,20 @@ const pages = defineCollection({
 
 const categories = defineCollection({
 	type: 'content',
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		// Reference a single author from the `authors` collection by `id`
-		// author: reference('authors'),
-		// Reference an array of related posts from the `blog` collection by `slug`
-		// relatedPosts: z.array(reference('blog')),
-	}),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			description: z.string(),
+			image: image()
+				.refine((img) => img.width <= 400, {
+					message: 'Category image must be at most 400 pixels wide!',
+				})
+				.optional(),
+			// Reference a single author from the `authors` collection by `id`
+			// author: reference('authors'),
+			// Reference an array of related posts from the `blog` collection by `slug`
+			// relatedPosts: z.array(reference('blog')),
+		}),
 })
 
 // const navigation = defineCollection({

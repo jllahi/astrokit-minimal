@@ -1,0 +1,25 @@
+---
+import { navMenu } from '@/data/navigation'
+import { buttonVariants } from './ui/button'
+---
+
+{
+	navMenu && navMenu.mainNav && (
+		<nav class="hidden gap-4 py-4 md:grid">
+			<ul class="flex flex-row gap-2">
+				{navMenu.mainNav.map(
+					(item) =>
+						item.href && (
+							<li>
+								{/* <Button asChild variant="ghost"> */}
+								<a href={item.href} class={buttonVariants({ variant: 'ghost' })}>
+									{item.title}
+								</a>
+								{/* </Button> */}
+							</li>
+						)
+				)}
+			</ul>
+		</nav>
+	)
+}
