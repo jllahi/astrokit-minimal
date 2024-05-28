@@ -25,14 +25,16 @@ export default function MenuMobile() {
 				<Separator className="mt-4" />
 				{navMenu && navMenu.mainNav && (
 					<nav className="grid gap-4 py-4">
-						<ul className="text-2xl font-black uppercase">
+						<ul className="flex flex-col gap-2">
 							{navMenu.mainNav.map(
 								(item) =>
 									item.href && (
 										<li key={item.title}>
-											<Button asChild variant="ghost">
-												<a href={item.href}>{item.title}</a>
-											</Button>
+											{/* <Button asChild variant="ghost"> */}
+											<a href={item.href} className="text-base font-black uppercase">
+												{item.title}
+											</a>
+											{/* </Button> */}
 										</li>
 									)
 							)}
