@@ -31,20 +31,18 @@ function Component({ slug }: Props) {
 	const isUpdating = query.status === 'pending' || query.isFetching || isFetching
 
 	return (
-		<>
-			<span className="text-slate-500">
-				{isUpdating ? (
-					<Spinner className="size-4 animate-spin" />
-				) : (
-					<>
-						{query.status === 'success' && (
-							<span>
-								({query.data.likesCount} {query.data.likesCount === 1 ? 'like' : 'likes'})
-							</span>
-						)}
-					</>
-				)}
-			</span>
-		</>
+		<span className="text-slate-500">
+			{isUpdating ? (
+				<Spinner className="size-4 animate-spin" />
+			) : (
+				<>
+					{query.status === 'success' && (
+						<span>
+							({query.data.likesCount} {query.data.likesCount === 1 ? 'like' : 'likes'})
+						</span>
+					)}
+				</>
+			)}
+		</span>
 	)
 }

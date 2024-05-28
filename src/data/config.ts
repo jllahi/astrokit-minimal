@@ -8,6 +8,28 @@ export const SITE = {
 		description: 'We are all made from stars',
 		image: '/open-graph.jpg',
 	},
+	nav: [
+		{
+			label: 'Home',
+			url: '/',
+		},
+		{
+			label: 'About',
+			url: '/about',
+		},
+		{
+			label: 'Heroes',
+			url: '/heroes',
+		},
+		{
+			label: 'Colors',
+			url: '/colors',
+		},
+		{
+			label: 'Blog',
+			url: '/posts',
+		},
+	],
 	urls: {
 		posts: 'posts',
 		tags: 'tags',
@@ -15,4 +37,8 @@ export const SITE = {
 	},
 	pagination: 6,
 	scheduled: 16000,
+	social: {
+		twitter: 'https://twitter.com/shadcn',
+		github: 'https://github.com/shadcn-ui/ui',
+	},
 }

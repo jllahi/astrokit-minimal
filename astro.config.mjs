@@ -32,7 +32,7 @@ export default defineConfig({
 					'twitter-x-line',
 					'whatsapp-line',
 				],
-				heroicons: ['moon', 'sun'],
+				heroicons: ['moon', 'sun', 'bars-3-bottom-right'],
 				'simple-icons': ['astro', 'react', 'tailwindcss'],
 			},
 		}),

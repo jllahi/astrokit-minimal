@@ -57,7 +57,7 @@ function Likes({ slug }: LikeButtonProps) {
 		<div className="flex items-center gap-2">
 			<button
 				disabled={!!isUpdating}
-				className="flex items-center gap-2 rounded-md bg-pink-500 px-4 py-2 text-white ring-1 ring-inset ring-black/10 hover:bg-pink-400 active:bg-pink-600 disabled:pointer-events-none hover:disabled:bg-pink-500"
+				className="flex items-center gap-2 rounded-md bg-secondary px-4 py-2 text-white ring-1 ring-inset ring-black/10 hover:bg-pink-600 active:bg-pink-800 disabled:pointer-events-none hover:disabled:bg-pink-500"
 				onClick={() => {
 					mutation.mutate()
 				}}
@@ -67,7 +67,7 @@ function Likes({ slug }: LikeButtonProps) {
 					{isUpdating ? (
 						<Spinner />
 					) : (
-						<span className="font-mono font-medium">
+						<span className="font-mono text-lg font-medium">
 							{query.data && 'likesCount' in query.data && query.data.likesCount}
 						</span>
 					)}

@@ -2,6 +2,9 @@
 import { buttonVariants } from '@/components/ui/button'
 import { ModeToggle } from '@/components/theme/ModeToggle'
 import { SITE } from '@/data/config'
+import MenuMobile from './MenuMobile'
+import { cn } from '@/lib/utils'
+// import { Icon } from 'astro-icon/components'
 ---
 
 <header
@@ -12,7 +15,7 @@ import { SITE } from '@/data/config'
 			<a href="/" class="flex items-center space-x-2">
 				<span class="inline-block font-black uppercase">{SITE.title}</span>
 			</a>
-			<nav>
+			<nav class="hidden md:block">
 				<a href="/about" class={buttonVariants({ variant: 'ghost' })}> About </a>
 				<a href="/heroes" class={buttonVariants({ variant: 'ghost' })}> Hero </a>
 				<a href="/colors" class={buttonVariants({ variant: 'ghost' })}> Colors </a>
@@ -24,12 +27,25 @@ import { SITE } from '@/data/config'
 						href="https://github.com/AREA44/astro-shadcn-ui-template"
 						target="_blank"
 						rel="noreferrer"
-						class={buttonVariants({ variant: 'ghost' })}
+						class={cn(buttonVariants({ variant: 'ghost' }), 'hidden md:block')}
 					>
 						GitHub
 					</a>
 					<!-- <ThemeToggle /> -->
 					<ModeToggle client:load />
+
+					<div class="block md:hidden">
+						<MenuMobile client:load />
+						<!-- <a
+							href="https://github.com/AREA44/astro-shadcn-ui-template"
+							target="_blank"
+							rel="noreferrer"
+							class={buttonVariants({ variant: 'outline' })}
+						>
+							Menu{' '}
+							<Icon name="heroicons:bars-3-bottom-right" class="align-center ml-2 inline size-6" />
+						</a> -->
+					</div>
 				</nav>
 			</div>
 		</div>
