@@ -33,7 +33,6 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
-    "astro-debugcss": "github:jllahi/astro-debugcss",
     "astro-eslint-parser": "^0.17.0",
     "astro-meta-tags": "^0.2.2",
     "clsx": "^2.1.1",
@@ -49,5 +48,6 @@
     "rimraf": "^5.0.5",
     "tailwind-merge": "^2.3.0",
     "vite-plugin-mkcert": "^1.17.5"
-  }
+  },
+  "packageManager": "pnpm@9.3.0"
 }
