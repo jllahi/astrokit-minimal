@@ -5,10 +5,9 @@ import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
-	// compressHTML: false,
 	integrations: [
 		tailwind({
-			// applyBaseStyles: false,
+			applyBaseStyles: false,
 		}),
 		icon({
 			iconDir: 'src/assets/icons',
@@ -18,7 +17,4 @@ export default defineConfig({
 		}),
 		metaTags(),
 	],
-	// vite: {
-	// 	plugins: [mkcert()],
-	// },
 })

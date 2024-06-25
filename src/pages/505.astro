@@ -2,13 +2,17 @@
 import Description from '@/components/global/Description.astro'
 import H1 from '@/components/global/H1.astro'
 import Section from '@/components/global/Section.astro'
-import siteConfig from '@/data/config'
 import Layout from '@/layouts/Layout.astro'
+
+interface Props {
+	error: unknown
+}
+const { error } = Astro.props
 ---
 
-<Layout>
+<Layout seo={{ title: '505' }}>
 	<Section>
-		<H1>{siteConfig.title}</H1>
-		<Description>{siteConfig.description}</Description>
+		<H1>Error 505</H1>
+		<Description>{error instanceof Error ? error.message : 'Unknown error'}</Description>
 	</Section>
 </Layout>

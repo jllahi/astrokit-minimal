@@ -1,16 +1,37 @@
 ---
+import Description from '@/components/global/Description.astro'
+import H1 from '@/components/global/H1.astro'
+import Section from '@/components/global/Section.astro'
 import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout seo={{ title: 'About' }}>
-	<main class="my-16 flex-grow p-8">
-		<h2 class="text-5xl font-black text-color-primary-darker dark:text-color-primary">
-			Primary Darker
-		</h2>
-		<p class="my-4 text-3xl text-color-primary-dark dark:text-color-primary-light">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque consectetur magni commodi odit
-			doloribus asperiores exercitationem! Iusto ut ex asperiores, in id similique minus molestiae
-			autem aspernatur enim placeat numquam?
+	<Section>
+		<H1>About this website</H1>
+		<Description
+			>Elementum interdum himenaeos turpis at tempor nam sit vehicula pede nisi montes consequat
+			gravida ullamcorper.</Description
+		>
+		<p>
+			Tristique magna ad hendrerit nostra a. Id ornare mauris dui penatibus bibendum pulvinar proin
+			ridiculus suspendisse felis tristique. Nec mollis semper lobortis consequat class mauris per
+			volutpat lectus. Arcu augue vehicula ultrices efficitur senectus euismod habitant placerat et.
+			Suscipit erat elit dapibus auctor neque lacus augue porttitor. Imperdiet fermentum feugiat
+			conubia porttitor purus si fringilla at.
 		</p>
-	</main>
+		<p>
+			Morbi semper litora hendrerit consectetur curabitur habitant. Himenaeos enim potenti dictum
+			dui mi. Curabitur arcu adipiscing cubilia duis sem pretium fringilla purus mi nascetur.
+			Ridiculus aenean nostra arcu nisl tincidunt aliquet consequat mi. Volutpat habitasse vel
+			ultricies vitae facilisi enim convallis posuere ullamcorper letius interdum. Viverra dictumst
+			ad nec adipiscing est leo arcu risus commodo. Iaculis sociosqu nam egestas donec at sed eros
+			nunc dui in.
+		</p>
+		<p>
+			Potenti enim tincidunt condimentum nascetur aenean senectus dictum aptent faucibus. Praesent
+			nisi letius eget habitant integer. Euismod fames nulla viverra eu bibendum. Est ut ridiculus
+			feugiat hendrerit semper nostra. Primis magna penatibus tristique sociosqu facilisis. Donec
+			velit posuere elit sagittis nullam tellus nec accumsan tortor ut.
+		</p>
+	</Section>
 </Layout>

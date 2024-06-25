@@ -8,7 +8,16 @@ pnpm create astro@latest -- --template jllahi/astrokit-minimal
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/jllahi/astrokit-minimal)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jllahi/astrokit-minimal)
 
+[![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
+
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+## 🚩 Next steps
+
+React: pnpm astro add react -y
+Svelte: pnpm astro add svelte -y
+DB: pnpm astro add db -y
+SSR: pnpm astro add vercel -y
 
 ## 🚀 Project Structure
 
@@ -42,6 +51,22 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `pnpm run astro -- --help` | Get help using the Astro CLI                     |
 
+## 📂 Important files and folders
+
+| File(s)                                     | Description                                             |
+| ------------------------------------------- | ------------------------------------------------------- |
+| `sanity.config.ts`                          | Config file for Sanity Studio                           |
+| `sanity.cli.ts`                             | Config file for Sanity CLI                              |
+| `/pages/studio/[[...index]].tsx`            | Where Sanity Studio is mounted                          |
+| `/pages/api/revalidate.ts`                  | Serverless route for triggering ISR                     |
+| `/pages/api/preview.ts`                     | Serverless route for triggering Preview mode            |
+| `/schemas`                                  | Where Sanity Studio gets its content types from         |
+| `/plugins`                                  | Where the advanced Sanity Studio customization is setup |
+| `/lib/sanity.api.ts`,`/lib/sanity.image.ts` | Configuration for the Sanity Content Lake client        |
+| `/lib/sanity.preview.ts`                    | Configuration for the live Preview Mode                 |
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+[vercel-deploy]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjllahi%2Fastrokit-minimal&repository-name=astrokit-minimal&project-name=astrokit-minimal&demo-title=Astro%20Kit%20Starter&demo-description=A%20Astro-powered%20blog%20with%20built-in%20content%20editing%20%26%20instant%20previews&demo-url=https%3A%2F%2Fastrokit-minimal.vercel.app%2F&demo-image=https%3A%2F%2Fuser-images.githubusercontent.com%2F81981%2F197501516-c7c8092d-0305-4abe-afb7-1e896ef7b90a.png
