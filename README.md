@@ -14,10 +14,10 @@ pnpm create astro@latest -- --template jllahi/astrokit-minimal
 
 ## 🚩 Next steps
 
-React: pnpm astro add react -y
-Svelte: pnpm astro add svelte -y
-DB: pnpm astro add db -y
-SSR: pnpm astro add vercel -y
+- React: pnpm astro add react -y
+- Svelte: pnpm astro add svelte -y
+- DB: pnpm astro add db -y
+- SSR: pnpm astro add vercel -y
 
 ## 🚀 Project Structure
 
@@ -45,20 +45,23 @@ All commands are run from the root of the project, from a terminal:
 | Command                    | Action                                           |
 | :------------------------- | :----------------------------------------------- |
 | `pnpm install`             | Installs dependencies                            |
-| `pnpm run dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm run build`           | Build your production site to `./dist/`          |
-| `pnpm run preview`         | Preview your build locally, before deploying     |
-| `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `pnpm dev`                 | Starts local dev server at `localhost:4321`      |
+| `pnpm build`               | Build your production site to `./dist/`          |
+| `pnpm preview`             | Preview your build locally, before deploying     |
+| `pnpm astro ...`           | Run CLI commands like `astro add`, `astro check` |
 | `pnpm run astro -- --help` | Get help using the Astro CLI                     |
+| `pnpm format`              | Format your code using Prettier                  |
+| `pnpm lint`                | Lint your code using Eslint                      |
+| `pnpm clean`               | Remove generated code                            |
 
 ## 📂 Important files and folders
 
 | File(s)                                     | Description                                             |
 | ------------------------------------------- | ------------------------------------------------------- |
-| `sanity.config.ts`                          | Config file for Sanity Studio                           |
-| `sanity.cli.ts`                             | Config file for Sanity CLI                              |
-| `/pages/studio/[[...index]].tsx`            | Where Sanity Studio is mounted                          |
-| `/pages/api/revalidate.ts`                  | Serverless route for triggering ISR                     |
+| `tailwind.config.mjs`                       | Config file for Tailwind CSS                            |
+| `prettier.config.mjs`                       | Config file for Prettier                                |
+| `/data/config.ts`                           | Data for config variables used globally                 |
+| `/utils/styles.ts`                          | Functions for handling styles                           |
 | `/pages/api/preview.ts`                     | Serverless route for triggering Preview mode            |
 | `/schemas`                                  | Where Sanity Studio gets its content types from         |
 | `/plugins`                                  | Where the advanced Sanity Studio customization is setup |

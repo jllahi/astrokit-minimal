@@ -1,8 +1,14 @@
 {
-	"recommendations": [
-		"astro-build.astro-vscode",
-		"bradlc.vscode-tailwindcss",
-		"SheltonLouis.astro-snippets"
-	],
-	"unwantedRecommendations": []
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "antfu.iconify",
+    "astro-build.astro-vscode",
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "idered.npm",
+    "SheltonLouis.astro-snippets",
+    "usernamehw.errorlens",
+    "yoavbls.pretty-ts-errors"
+  ],
+  "unwantedRecommendations": []
 }
