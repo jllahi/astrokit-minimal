@@ -69,4 +69,4 @@ All commands are run from the root of the project, from a terminal:
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 
-[vercel-deploy]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjllahi%2Fastrokit-minimal&repository-name=astrokit-minimal&project-name=astrokit-minimal&demo-title=Astro%20Kit%20Starter&demo-description=A%20Astro-powered%20blog%20with%20built-in%20content%20editing%20%26%20instant%20previews&demo-url=https%3A%2F%2Fastrokit-minimal.vercel.app%2F&demo-image=https%3A%2F%2Fuser-images.githubusercontent.com%2F81981%2F197501516-c7c8092d-0305-4abe-afb7-1e896ef7b90a.png
+[vercel-deploy]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjllahi%2Fastrokit-minimal&repository-name=astrokit-minimal&project-name=astrokit-minimal&demo-title=Astro%20Kit%20Starter&demo-description=Astro-powered%20site%20with%20minimal%20configuration&demo-url=https%3A%2F%2Fastrokit-minimal.vercel.app%2F&demo-image=https%3A%2F%2Fastrokit-minimal.vercel.app%2Freadme.jpg
