@@ -24,7 +24,7 @@
     "@iconify-json/heroicons": "^1.1.21",
     "astro": "^4.11.1",
     "astro-icon": "^1.1.0",
-    "astro-meta-tags": "^0.2.2",
+    "astro-meta-tags": "^0.3.0",
     "astro-seo": "^0.8.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
