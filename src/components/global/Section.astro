@@ -8,15 +8,16 @@ const sectionVariants = cva('gap-2 pb-8 pt-6 md:py-10', {
 	variants: {
 		intent: {
 			center: ['grid h-full place-items-center place-content-center'],
-			background: ['rounded-xl bg-accent/60'],
-			outline: ['rounded-xl border'],
-			full: ['py-32 md:py-56'],
+			container: ['max-w-4xl mx-auto flex flex-col gap-4'],
+			full: ['w-full'],
 		},
 	},
 	// compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }],
 })
 
-export interface Props extends HTMLAttributes<'section'>, VariantProps<typeof sectionVariants> {
+export interface Props
+	extends HTMLAttributes<'section'>,
+		VariantProps<typeof sectionVariants> {
 	className?: string
 }
 const { class: className, intent = 'center', ...rest } = Astro.props

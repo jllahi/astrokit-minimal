@@ -6,32 +6,30 @@ import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout seo={{ title: 'About' }}>
-	<Section>
-		<H1>About this website</H1>
-		<Description
-			>Elementum interdum himenaeos turpis at tempor nam sit vehicula pede nisi montes consequat
-			gravida ullamcorper.</Description
-		>
-		<p>
-			Tristique magna ad hendrerit nostra a. Id ornare mauris dui penatibus bibendum pulvinar proin
-			ridiculus suspendisse felis tristique. Nec mollis semper lobortis consequat class mauris per
-			volutpat lectus. Arcu augue vehicula ultrices efficitur senectus euismod habitant placerat et.
-			Suscipit erat elit dapibus auctor neque lacus augue porttitor. Imperdiet fermentum feugiat
-			conubia porttitor purus si fringilla at.
-		</p>
-		<p>
-			Morbi semper litora hendrerit consectetur curabitur habitant. Himenaeos enim potenti dictum
-			dui mi. Curabitur arcu adipiscing cubilia duis sem pretium fringilla purus mi nascetur.
-			Ridiculus aenean nostra arcu nisl tincidunt aliquet consequat mi. Volutpat habitasse vel
-			ultricies vitae facilisi enim convallis posuere ullamcorper letius interdum. Viverra dictumst
-			ad nec adipiscing est leo arcu risus commodo. Iaculis sociosqu nam egestas donec at sed eros
-			nunc dui in.
-		</p>
-		<p>
-			Potenti enim tincidunt condimentum nascetur aenean senectus dictum aptent faucibus. Praesent
-			nisi letius eget habitant integer. Euismod fames nulla viverra eu bibendum. Est ut ridiculus
-			feugiat hendrerit semper nostra. Primis magna penatibus tristique sociosqu facilisis. Donec
-			velit posuere elit sagittis nullam tellus nec accumsan tortor ut.
-		</p>
+	<Section intent={'container'}>
+		<header>
+			<H1>About this website</H1>
+			<Description
+				>Learn about the tech stack and inspiration behind AstroKit.</Description
+			>
+		</header>
+		<h2 class="text-2xl font-semibold">Tech Stack</h2>
+		<ul>
+			<li>Language: Typescript</li>
+			<li>Framework: Astro</li>
+			<li>Styling: Tailwind CSS</li>
+			<li>Component Library: Shadcn/ui (React)</li>
+			<li>Database: Astro DB (libSQL)</li>
+			<li>ORM: Astro DB (Drizzle)</li>
+			<li>Authentication: Clerk</li>
+			<li>Analytics: Vercel Analytics</li>
+			<li>Internationalization: Astro i18n</li>
+			<li>Deployment: Vercel</li>
+			<li>Linting & Formatting: ESLint & Prettier</li>
+			<!-- <li>Email: Resend</li>
+			<li>Email Template : React Email</li>
+			<li>Payment: Stripe</li>
+			<li>File Storage: UploadThing</li> -->
+		</ul>
 	</Section>
 </Layout>

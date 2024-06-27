@@ -4,11 +4,10 @@
 pnpm create astro@latest -- --template jllahi/astrokit-minimal
 ```
 
+[![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/jllahi/astrokit-minimal)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/jllahi/astrokit-minimal)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jllahi/astrokit-minimal)
-
-[![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 

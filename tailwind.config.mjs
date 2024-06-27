@@ -45,6 +45,14 @@ const tailwindConfig = {
 					foreground: 'hsl(var(--card-foreground))',
 				},
 			},
+			container: {
+				center: true,
+				padding: '2em', // 'var(--spacing-2)',
+				screens: {
+					'2xl': '1400px', // '820px',
+				},
+				// maxWidth: '100%',
+			},
 			// colors: {
 			// 	'color-black': colors.gray[900],
 			// 	'color-white': colors.gray[100],
@@ -111,7 +119,12 @@ const tailwindConfig = {
 		},
 	},
 	plugins: [
-		// require('@tailwindcss/typography'),
+		// require("tailwindcss-animate"), // https://github.com/tailwindlabs/tailwindcss-animate
+		// require('@tailwindcss/typography'), // https://github.com/tailwindlabs/tailwindcss-typography
+		// require('@tailwindcss/aspect-ratio'), // https://github.com/tailwindlabs/tailwindcss-aspect-ratio
+		// require('@tailwindcss/line-clamp'), // https://github.com/tailwindlabs/tailwindcss-line-clamp
+		// require('@tailwindcss/forms'), // https://github.com/tailwindlabs/tailwindcss-forms
+		// require('@tailwindcss/container-queries'), // https://github.com/tailwindlabs/tailwindcss-container-queries
 	],
 }
 export default tailwindConfig
