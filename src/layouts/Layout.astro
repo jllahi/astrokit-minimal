@@ -17,12 +17,7 @@ interface Props {
 const { seo } = Astro.props
 ---
 
-<script is:inline data-astro-rerun src="/theme.js"></script>
-<script>
-	import Observer from 'tailwindcss-intersect'
-
-	Observer.start()
-</script>
+<script data-astro-rerun src="/theme.js"></script>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -43,6 +38,9 @@ const { seo } = Astro.props
 			{...seo}
 		/>
 		<ViewTransitions />
+		<script>
+			document.documentElement.classList.add('js')
+		</script>
 	</head>
 	<body class="min-h-screen bg-background font-sans antialiased">
 		<div class="relative flex min-h-screen flex-col">
@@ -52,5 +50,29 @@ const { seo } = Astro.props
 			</main>
 			<Footer />
 		</div>
+		<style is:global>
+			@keyframes translate-down {
+				to {
+					transform: translateY(0);
+				}
+			}
+
+			.timeline {
+				/* This timeline would be overriden */
+				animation-timeline: scroll(y);
+			}
+
+			.animate-translate-down {
+				animation: translate-down 3s cubic-bezier(0.65, 0.05, 0.17, 0.99) forwards;
+			}
+
+			.timeline {
+				/* This is the correct order */
+				animation-timeline: scroll(y);
+			}
+		</style>
+		<script>
+			import 'taos'
+		</script>
 	</body>
 </html>

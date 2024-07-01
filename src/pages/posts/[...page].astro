@@ -8,6 +8,7 @@ import Pagination from '@/components/utils/Pagination.astro'
 import Layout from '@/layouts/Layout.astro'
 import { getStaticPosts as getStaticPaths } from '@/utils/paths/getStaticPosts'
 import type { Page } from 'astro'
+import { Debug } from 'astro:components'
 import type { CollectionEntry } from 'astro:content'
 
 interface Props {
@@ -23,5 +24,6 @@ const { page } = Astro.props
 		<PostList posts={page.data} />
 		<Pagination {page} />
 	</Section>
-	<DataDump data={page} />
+
+	{import.meta.env.DEV && <Debug data={page} />}
 </Layout>

@@ -1,0 +1,18 @@
+---
+import Section from '@/components/Section.astro'
+import Layout from '@/layouts/Layout.astro'
+
+interface Props {
+	error: unknown
+}
+const { error } = Astro.props
+---
+
+<Layout seo={{ title: '505' }}>
+	<Section>
+		<div class="grid min-h-96 place-content-center place-items-center">
+			<h1 class="text-4xl font-black">Error 505</h1>
+			<p>{error instanceof Error ? error.message : 'Unknown error'}</p>
+		</div>
+	</Section>
+</Layout>

@@ -55,7 +55,13 @@ const category = await getEntry(post.data.category)
 	<Section>
 		<Article>
 			<SectionHeader title={post.data.title} description={post.data.description} />
-			<ImageKit src={post.data.image} alt={post.data.title} loading="eager" />
+			<ImageKit
+				src={post.data.image}
+				alt={post.data.title}
+				transition:name={`image-${post.slug}`}
+				loading="eager"
+				class="my-4"
+			/>
 
 			<div class="my-2 flex flex-row justify-between">
 				<DateFormat date={post.data.date} />

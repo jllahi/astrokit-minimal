@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'astro/types'
 import { tv, type VariantProps } from 'tailwind-variants'
 
-export const divider = tv({
+export const dividerVariants = tv({
 	base: 'my-10 border',
 	variants: {
 		intent: {
@@ -23,9 +23,9 @@ export const divider = tv({
 	compoundVariants: [{}],
 })
 
-export interface Props extends HTMLAttributes<'hr'>, VariantProps<typeof divider> {}
+export interface Props extends HTMLAttributes<'hr'>, VariantProps<typeof dividerVariants> {}
 
 const { intent, size, class: className, ...rest } = Astro.props
 ---
 
-<hr class={divider({ intent, size, className })} data-name="ui-divider" {...rest} />
+<hr class={dividerVariants({ intent, size, className })} data-name="ui-divider" {...rest} />

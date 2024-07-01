@@ -27,3 +27,82 @@ const { class: className, intent = 'default', ...rest } = Astro.props
 <section class={cn(sectionVariants({ intent }), className)} {...rest}>
 	<slot />
 </section>
+
+<style is:global>
+	/* From right */
+	@keyframes from-right {
+		from {
+			opacity: 0;
+			translate: calc(100% + 1rem);
+			/* clip-path: inset(45% 20% 45% 20%); */
+		}
+		to {
+			opacity: 1;
+			/* clip-path: inset(0% 0% 0% 0%); */
+		}
+	}
+	section.from-right {
+		/* Create View Timeline */
+		view-timeline-name: --revealing-image;
+		view-timeline-axis: block;
+
+		/* Attach animation, linked to the  View Timeline */
+		animation: linear from-right both;
+		animation-timeline: --revealing-image;
+
+		/* Tweak range when effect should run*/
+		animation-range: entry 15% cover 30%;
+		overflow: hidden;
+		overscroll-behavior-x: contain;
+	}
+
+	/* Reveal effect */
+	@keyframes reveal {
+		from {
+			opacity: 0;
+			clip-path: inset(45% 20% 45% 20%);
+		}
+		to {
+			opacity: 1;
+			clip-path: inset(0% 0% 0% 0%);
+		}
+	}
+	section.reveal {
+		/* Create View Timeline */
+		view-timeline-name: --revealing-image;
+		view-timeline-axis: block;
+
+		/* Attach animation, linked to the  View Timeline */
+		animation: linear reveal both;
+		animation-timeline: --revealing-image;
+
+		/* Tweak range when effect should run*/
+		animation-range: entry 25% cover 50%;
+	}
+
+	/* Animate in and out */
+	@keyframes animate-in-and-out {
+		entry 0% {
+			opacity: 0;
+			transform: translateY(100%);
+		}
+		entry 100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		exit 0% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		exit 100% {
+			opacity: 0;
+			transform: translateY(-100%);
+		}
+	}
+
+	section.animate-in-and-out {
+		animation: linear animate-in-and-out;
+		animation-timeline: view();
+	}
+</style>

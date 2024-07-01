@@ -2,26 +2,28 @@
 import { Picture } from 'astro:assets'
 // import { Image as ImageCustom } from 'astro:assets'
 import type { ImageMetadata } from 'astro'
+import { cn } from '@/lib/utils'
 
 interface Props {
 	src: ImageMetadata
 	alt: string
+	// slug: string
 	loading?: 'eager' | 'lazy'
 	// 	// formats?: string[]
 	// 	// widths?: number[]
 	// 	// quality?: number
 	// 	// transitionName?: string
-	// 	// class?: string
+	class?: string
 }
 // interface postType extends CollectionEntry<'posts'>
 
-const { src, alt, loading = 'lazy', ...attrs } = Astro.props
+const { src, alt, loading = 'lazy', class: className, ...attrs } = Astro.props
 ---
 
 <Picture
 	{alt}
 	{src}
-	class="my-4 aspect-video w-full rounded bg-muted object-cover"
+	class={cn('aspect-video w-full rounded bg-muted object-cover', className)}
 	transition:name={`image-${src}`}
 	{loading}
 	formats={['webp']}

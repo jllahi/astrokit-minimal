@@ -40,6 +40,14 @@ export const navMenu: NavConfig = {
 			href: '/colors',
 		},
 		{
+			title: 'Accordion',
+			href: '/faq',
+		},
+		{
+			title: 'Sections',
+			href: '/sections',
+		},
+		{
 			title: 'Posts',
 			href: '/posts',
 		},

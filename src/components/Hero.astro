@@ -6,7 +6,7 @@ import { Image } from 'astro:assets'
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { HTMLAttributes } from 'astro/types'
 
-const hero = cva('', {
+const heroVariants = cva('', {
 	variants: {
 		intent: {
 			background: ['rounded-xl bg-accent/60'],
@@ -16,7 +16,7 @@ const hero = cva('', {
 	// compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }],
 })
 
-export interface Props extends HTMLAttributes<'div'>, VariantProps<typeof hero> {}
+export interface Props extends HTMLAttributes<'div'>, VariantProps<typeof heroVariants> {}
 
 const { intent = 'outline' } = Astro.props
 ---
@@ -24,7 +24,7 @@ const { intent = 'outline' } = Astro.props
 <section class="bg-background">
 	<div
 		class={cn(
-			hero({ intent }),
+			heroVariants({ intent }),
 			'mx-auto grid w-full max-w-screen-2xl place-items-center items-center p-8 lg:grid-cols-12 lg:gap-8 lg:p-16 xl:gap-0'
 		)}
 	>

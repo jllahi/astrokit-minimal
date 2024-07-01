@@ -1,16 +1,13 @@
-import tailwind from '@astrojs/tailwind'
-import debugcss from 'astro-debugcss'
-import icon from 'astro-icon'
-import { defineConfig } from 'astro/config'
-// import mkcert from 'vite-plugin-mkcert'
 import db from '@astrojs/db'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
+import tailwind from '@astrojs/tailwind'
 import vercel from '@astrojs/vercel/serverless'
-import AstroDevtoolbarTailwind from 'astro-devtoolbar-tailwind'
 import embeds from 'astro-embed/integration'
+import icon from 'astro-icon'
 import metaTags from 'astro-meta-tags'
 import robotsTxt from 'astro-robots-txt'
+import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
@@ -42,8 +39,6 @@ export default defineConfig({
 		mdx(),
 		robotsTxt(),
 		metaTags(),
-		debugcss(),
-		AstroDevtoolbarTailwind(),
 	],
 	// vite: {
 	// 	plugins: [mkcert()],

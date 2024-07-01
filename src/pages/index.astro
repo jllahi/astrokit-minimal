@@ -2,7 +2,7 @@
 // import Hero from '@/components/Hero.astro'
 import Section from '@/components/Section.astro'
 import SectionHeader from '@/components/SectionHeader.astro'
-import { buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import Layout from '@/layouts/Layout.astro'
 ---
 
@@ -25,6 +25,19 @@ import Layout from '@/layouts/Layout.astro'
 			>
 				GitHub
 			</a>
+
+			<Button>Hello World</Button>
+
+			<Button>Hello World</Button>
+
+			<Button
+				asChild
+				variant="secondary"
+				size={'lg'}
+				className={buttonVariants({ variant: 'secondary' })}
+			>
+				<a href="https://github.com/AREA44/astro-shadcn-ui-template">GitHub</a>
+			</Button>
 		</div>
 	</Section>
 	<!-- <Section>

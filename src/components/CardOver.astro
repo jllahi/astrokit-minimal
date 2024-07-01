@@ -1,0 +1,80 @@
+---
+import { SITE } from '@/data/config'
+import { getDay, getMonth } from '@/utils/content'
+import type { HTMLAttributes } from 'astro/types'
+import { getImage } from 'astro:assets'
+import { getEntry, type CollectionEntry } from 'astro:content'
+import ImageKit from './embed/ImageKit.astro'
+
+interface Props extends HTMLAttributes<'article'> {
+	post: CollectionEntry<'posts'> //  CollectionEntry<ContentCollectionKey>
+	featured?: boolean
+}
+
+const { post, featured, ...props } = Astro.props
+
+const optimizedBackground = await getImage({
+	src: post.data.image,
+	format: 'webp',
+	width: featured ? 1200 : 600,
+	quality: 85,
+})
+
+const relatedCategory = await getEntry(post.data.category)
+---
+
+<article
+	class:list={[
+		'relative flex w-full flex-col border border-foreground bg-background bg-cover bg-center text-left',
+		// { 'col-span-3': featured }
+	]}
+	{...props}
+>
+	<a href={`/${SITE.urls.posts}/${post.slug}`} aria-label={post.data.title}>
+		<ImageKit
+			src={post.data.image}
+			alt={post.data.title}
+			loading="eager"
+			transition:name={`image-${post.slug}`}
+		/>
+	</a>
+	<!-- <div
+			class="absolute bottom-0 left-0 right-0 top-0 mt-20 bg-gradient-to-b from-transparent to-gray-900"
+		>
+		</div> -->
+	<div class="absolute left-0 right-0 top-0 mx-5 mt-2 flex items-center justify-between">
+		<!-- <Link href={`/${site.urls.category}/${relatedCategory.slug}`} size="sm" intent="tag"
+				>{relatedCategory.data.title}
+			</Link> -->
+		<a href={`/${SITE.urls.category}/${relatedCategory.slug}`} aria-label={post.data.title}>
+			<div
+				class:list={[
+					'border border-foreground bg-background px-2 text-foreground no-underline hover:bg-foreground hover:text-background',
+					// 'dark:border-color-white dark:bg-color-black dark:hover:bg-color-white dark:text-white dark:hover:text-black',
+					'px-2 py-1 text-xs font-bold uppercase',
+				]}
+			>
+				{relatedCategory.data.title}
+			</div>
+		</a>
+		<div class="font-regular flex select-none flex-col justify-start text-foreground">
+			<span class="leading-0 text-3xl font-semibold drop-shadow-md">{getDay(post.data.date)}</span>
+			<span class="-mt-3 drop-shadow-md">{getMonth(post.data.date)}</span>
+		</div>
+	</div>
+	<header class="border-t border-foreground p-5">
+		<a
+			href={`/${SITE.urls.posts}/${post.slug}`}
+			class="font-heading text-pretty text-2xl font-bold leading-7 tracking-tight text-foreground hover:underline"
+		>
+			{post.data.title}
+			{
+				post.data.draft && (
+					<span class="bg-color-error mx-2 rounded bg-destructive p-1 text-xs uppercase text-destructive-foreground">
+						Draft
+					</span>
+				)
+			}
+		</a>
+	</header>
+</article>

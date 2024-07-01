@@ -3,7 +3,12 @@ import { fontFamily } from 'tailwindcss/defaultTheme'
 
 const config = {
 	darkMode: ['class'],
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: {
+		relative: true,
+		transform: (content) => content.replace(/taos:/g, ''),
+		files: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	},
+	// content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	prefix: '',
 	theme: {
 		container: {
@@ -74,11 +79,18 @@ const config = {
 		},
 	},
 	plugins: [
-		require('tailwindcss-animate'),
+		// require('tailwindcss-animate'),
 		require('@tailwindcss/typography'),
-		require('tailwindcss-intersect'),
+		require('taos/plugin'),
+		// require('@adam.plesnik/tailwindcss-scroll-driven-animations'),
+		// require('tailwindcss-intersect'),
 		// require('tailwindcss-full-bleed'),
 		// require('tailwindcss-container-bleed'),
+	],
+	safelist: [
+		'!duration-[0ms]',
+		'!delay-[0ms]',
+		'html.js :where([class*="taos:"]:not(.taos-init))',
 	],
 } satisfies Config
 
