@@ -1,78 +1,35 @@
 ---
-import Section from '@/components/Section.astro'
-import SectionHeader from '@/components/SectionHeader.astro'
-import { buttonVariants } from '@/components/ui/button'
+import Description from '@/components/global/Description.astro'
+import H1 from '@/components/global/H1.astro'
+import Section from '@/components/global/Section.astro'
 import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout seo={{ title: 'About' }}>
-  <Section>
-    <SectionHeader
-      title="This is the About page."
-      description="Accessible and customizable components that you can copy and paste into your webs."
-    />
-    <div class="flex gap-4">
-      <a href="https://ui.shadcn.com" target="_blank" rel="noreferrer" class={buttonVariants()}>
-        Documentation
-      </a>
-      <a
-        href="https://github.com/AREA44/astro-shadcn-ui-template"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants({ variant: 'outline' })}
-      >
-        GitHub
-      </a>
-    </div>
-    <p>
-      Sint ea excepteur qui sint velit reprehenderit deserunt. Cupidatat sint qui laboris cillum
-      irure anim adipisicing culpa esse et proident adipisicing. Laboris qui et laborum magna
-      deserunt non adipisicing anim non pariatur occaecat et reprehenderit. Nisi proident esse
-      cillum qui non anim commodo nostrud. Aliqua in sit reprehenderit sint consequat do ex ullamco
-      nostrud enim laboris anim labore. Nostrud sit eiusmod sit aliqua voluptate aliquip.
-    </p>
-
-    <p>
-      Fugiat fugiat officia anim sint. Elit veniam excepteur id in aute duis amet. Labore
-      consectetur enim dolore nostrud sint fugiat culpa sint ex culpa. Magna irure veniam eu esse
-      nostrud et fugiat laborum sint labore ea Lorem. Labore nostrud eiusmod eiusmod incididunt amet
-      voluptate cupidatat tempor excepteur tempor consequat culpa.
-    </p>
-
-    <p>
-      Ullamco in cillum Lorem qui. Laboris fugiat deserunt nostrud anim do velit sint reprehenderit
-      nisi minim quis. Et fugiat ea non reprehenderit adipisicing officia officia aliqua. In nisi
-      nulla minim veniam. Ullamco fugiat ea irure sint aliqua ex mollit deserunt ut et adipisicing
-      dolore consectetur. Anim occaecat deserunt amet deserunt nostrud amet cillum aliquip dolore
-      duis exercitation irure deserunt.
-    </p>
-    <p>
-      Sint ea excepteur qui sint velit reprehenderit deserunt. Cupidatat sint qui laboris cillum
-      irure anim adipisicing culpa esse et proident adipisicing. Laboris qui et laborum magna
-      deserunt non adipisicing anim non pariatur occaecat et reprehenderit. Nisi proident esse
-      cillum qui non anim commodo nostrud. Aliqua in sit reprehenderit sint consequat do ex ullamco
-      nostrud enim laboris anim labore. Nostrud sit eiusmod sit aliqua voluptate aliquip.
-    </p>
-
-    <p>
-      Fugiat fugiat officia anim sint. Elit veniam excepteur id in aute duis amet. Labore
-      consectetur enim dolore nostrud sint fugiat culpa sint ex culpa. Magna irure veniam eu esse
-      nostrud et fugiat laborum sint labore ea Lorem. Labore nostrud eiusmod eiusmod incididunt amet
-      voluptate cupidatat tempor excepteur tempor consequat culpa.
-    </p>
-
-    <p>
-      Elit amet sunt velit magna eu dolor laborum labore. Pariatur dolore esse in in pariatur irure
-      deserunt officia laborum ea. Occaecat elit excepteur officia culpa nulla sit non in nulla
-      aliqua veniam do occaecat proident.
-    </p>
-
-    <p>
-      Ullamco in cillum Lorem qui. Laboris fugiat deserunt nostrud anim do velit sint reprehenderit
-      nisi minim quis. Et fugiat ea non reprehenderit adipisicing officia officia aliqua. In nisi
-      nulla minim veniam. Ullamco fugiat ea irure sint aliqua ex mollit deserunt ut et adipisicing
-      dolore consectetur. Anim occaecat deserunt amet deserunt nostrud amet cillum aliquip dolore
-      duis exercitation irure deserunt.
-    </p>
-  </Section>
+	<Section intent={'container'}>
+		<header>
+			<H1>About this website</H1>
+			<Description
+				>Learn about the tech stack and inspiration behind AstroKit.</Description
+			>
+		</header>
+		<h2 class="text-2xl font-semibold">Tech Stack</h2>
+		<ul>
+			<li>Language: Typescript</li>
+			<li>Framework: Astro</li>
+			<li>Styling: Tailwind CSS</li>
+			<li>Component Library: Shadcn/ui (React)</li>
+			<li>Database: Astro DB (libSQL)</li>
+			<li>ORM: Astro DB (Drizzle)</li>
+			<li>Authentication: Clerk</li>
+			<li>Analytics: Vercel Analytics</li>
+			<li>Internationalization: Astro i18n</li>
+			<li>Deployment: Vercel</li>
+			<li>Linting & Formatting: ESLint & Prettier</li>
+			<!-- <li>Email: Resend</li>
+			<li>Email Template : React Email</li>
+			<li>Payment: Stripe</li>
+			<li>File Storage: UploadThing</li> -->
+		</ul>
+	</Section>
 </Layout>

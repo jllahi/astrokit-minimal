@@ -4,10 +4,6 @@
 
 @layer base {
 	:root {
-		/*
-		UI Colorgen: https://ui-colorgen.vercel.app/
-		HSL Picker: https://hslpicker.com/
-		*/
 		--background: 0 0% 100%;
 		--foreground: 222.2 84% 4.9%;
 

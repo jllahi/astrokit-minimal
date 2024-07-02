@@ -1,12 +1,13 @@
 ---
-import Section from '@/components/Section.astro'
+import Description from '@/components/global/Description.astro'
+import H1 from '@/components/global/H1.astro'
+import Section from '@/components/global/Section.astro'
 import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout seo={{ title: '404' }}>
 	<Section>
-		<div class="grid min-h-96 place-content-center place-items-center">
-			<h1 class="text-4xl font-black">Error 404</h1>
-		</div>
+		<H1>Error 404</H1>
+		<Description>Page not found</Description>
 	</Section>
 </Layout>

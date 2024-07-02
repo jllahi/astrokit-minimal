@@ -1,5 +1,7 @@
 ---
-import Section from '@/components/Section.astro'
+import Description from '@/components/global/Description.astro'
+import H1 from '@/components/global/H1.astro'
+import Section from '@/components/global/Section.astro'
 import Layout from '@/layouts/Layout.astro'
 
 interface Props {
@@ -10,9 +12,9 @@ const { error } = Astro.props
 
 <Layout seo={{ title: '505' }}>
 	<Section>
-		<div class="grid min-h-96 place-content-center place-items-center">
-			<h1 class="text-4xl font-black">Error 505</h1>
-			<p>{error instanceof Error ? error.message : 'Unknown error'}</p>
-		</div>
+		<H1>Error 505</H1>
+		<Description
+			>{error instanceof Error ? error.message : 'Unknown error'}</Description
+		>
 	</Section>
 </Layout>
