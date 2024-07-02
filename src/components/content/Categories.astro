@@ -1,0 +1,55 @@
+---
+import { SITE } from '@/data/config'
+import type { HTMLAttributes } from 'astro/types'
+import { getCollection } from 'astro:content'
+// import type { Category } from '@/utils/getCategories'
+import { buttonVariants } from '@/components/ui/button'
+import { cva, type VariantProps } from 'class-variance-authority'
+
+export const categoriesVariants = cva('m-0 flex flex-wrap place-items-center gap-2 p-0', {
+	variants: {
+		intent: {
+			outline: 'border-2 border-black text-black hover:bg-black hover:text-white',
+			primary: 'bg-color-primary hover:bg-color-primary-dark text-white',
+			// inverted: '',
+			tag: '',
+		},
+		size: {
+			sm: 'my-2 gap-2 text-xs md:gap-3',
+			md: 'my-4 gap-3 text-base md:gap-4',
+			lg: 'my-8 gap-4 text-xl md:gap-8',
+		},
+	},
+	defaultVariants: {
+		size: 'md',
+		intent: 'tag',
+	},
+	// compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }]
+})
+
+export interface Props extends HTMLAttributes<'ul'>, VariantProps<typeof categoriesVariants> {
+	// categories: CollectionEntry<'categories'>[] // | undefined
+}
+// const { categories, intent, size, class: className, ...rest } = Astro.props
+const { intent, size, class: className, ...rest } = Astro.props
+// <Icon name="ri:bookmark-line" title="Categories" class="align-center mb-1 inline size-4" />
+// console.dir(categories)
+const categories = await getCollection('categories')
+---
+
+{
+	categories && (
+		<ul class={categoriesVariants({ intent, size, className })} data-name="ui-categories" {...rest}>
+			{categories.map((category) => (
+				<li>
+					<a
+						href={`/${SITE.urls.category}/${category.slug}`}
+						class={buttonVariants({ variant: 'secondary' })}
+					>
+						{category.data.title}
+					</a>
+				</li>
+			))}
+		</ul>
+	)
+}

@@ -1,0 +1,100 @@
+---
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content'
+// import { YouTube } from 'astro-embed'
+import Prose from '@/components/content/Prose.astro'
+import TableContents from '@/components/content/TableContents.astro'
+// import Tags from '@/components/content/Tags.astro.txt'
+import { componentsEmbed } from '@/components/embed/ComponentsEmbed'
+import ImageKit from '@/components/embed/ImageKit.astro'
+import Article from '@/components/Article.astro'
+import DataDump from '@/components/utils/DataDump.astro'
+import DateFormat from '@/components/utils/DateFormat.astro'
+import SocialShare from '@/components/utils/SocialShare.astro'
+import { SITE } from '@/data/config'
+import Layout from '@/layouts/Layout.astro'
+import postFilter from '@/utils/postFilter'
+import Section from '@/components/Section.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
+import PostListCategory from '@/components/content/PostListCategory.astro'
+import LikeButton from '@/components/likes/like-button'
+import { Separator } from '@/components/ui/separator'
+import CategoryCard from '@/components/CategoryCard'
+
+export async function getStaticPaths() {
+	const posts = (await getCollection('posts')).filter(postFilter)
+
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}))
+}
+
+interface Props {
+	post: CollectionEntry<'posts'>
+}
+
+const { post } = Astro.props
+const { Content, headings } = await post.render()
+
+const category = await getEntry(post.data.category)
+---
+
+<Layout
+	seo={{
+		title: post.data.title,
+		description: post.data.description ?? SITE.description,
+		openGraph: {
+			basic: {
+				title: post.data.title,
+				type: 'article',
+				image: post.data.image.src,
+			},
+		},
+	}}
+>
+	<Section>
+		<Article>
+			<SectionHeader title={post.data.title} description={post.data.description} />
+			<ImageKit
+				src={post.data.image}
+				alt={post.data.title}
+				transition:name={`image-${post.slug}`}
+				loading="eager"
+				class="my-4"
+			/>
+
+			<div class="my-2 flex flex-row justify-between">
+				<DateFormat date={post.data.date} />
+				{
+					// <span>Reading time: {post.data.reading}</span>
+				}
+				{
+					category && (
+						<div class="my-4 flex-wrap place-items-center gap-3 p-0 md:flex">
+							<CategoryCard category={category} client:load />
+						</div>
+					)
+				}
+				{
+					// <Tags tags={post.data.tags} size="sm" intent="tag" />
+				}
+			</div>
+			<Prose>
+				<TableContents {headings} />
+				<Content components={componentsEmbed} />
+			</Prose>
+
+			<div class="mt-2 flex w-full flex-row justify-between">
+				<LikeButton slug={post.slug} client:load />
+				<SocialShare description={post.data.description} title={post.data.title} via={SITE.title} />
+			</div>
+		</Article>
+	</Section>
+	<Separator />
+	<Section>
+		<SectionHeader title="Related posts" />
+		<PostListCategory category={post.data.category.slug} />
+	</Section>
+
+	<DataDump data={post} />
+</Layout>

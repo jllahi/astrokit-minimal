@@ -1,0 +1,13 @@
+---
+import Accordion from '@/components/Accordion'
+import Section from '@/components/Section.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout seo={{ title: 'FAQ' }}>
+	<Section>
+		<SectionHeader title="This is the FAQ page." />
+		<Accordion client:load />
+	</Section>
+</Layout>

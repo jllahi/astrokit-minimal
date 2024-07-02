@@ -1,0 +1,18 @@
+---
+import Card from '@/components/Card.astro'
+import getPostsByCategory from '@/utils/getPostsByCategory'
+import { getCollection } from 'astro:content'
+
+interface Props {
+	// posts?: CollectionEntry<ContentCollectionKey>[]
+	category: string
+}
+
+const { category } = Astro.props
+const posts = await getCollection('posts')
+const filteredPosts = getPostsByCategory(posts.slice(0, 3), category)
+---
+
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+	{filteredPosts.map((post, key) => <Card post={post} featured={key == 0} />)}
+</div>

@@ -3,6 +3,23 @@
 @tailwind utilities;
 
 @layer base {
+	:root {
+		--font-family-display: 'Inter Variable', 'sans-serif', system-ui;
+
+		--background: #eee;
+		--foreground: #111;
+
+		--color-custom-pink: #ff00b3;
+	}
+
+	.dark {
+		--background: #111;
+		--foreground: #eee;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+	}
 }
 
 @layer components {

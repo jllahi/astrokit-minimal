@@ -1,10 +1,46 @@
 ---
-import SampleImage from '@/components/SampleImage.astro'
+// import Hero from '@/components/Hero.astro'
+import Section from '@/components/Section.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
+import { Button, buttonVariants } from '@/components/ui/button'
 import Layout from '@/layouts/Layout.astro'
 ---
 
-<Layout>
-	<main class="flex-grow">
-		<SampleImage alt="A cat trying to catch a fish-shaped cloud." />
-	</main>
+<Layout seo={{ title: 'Welcome' }}>
+	<Section>
+		<SectionHeader
+			title="Welcome to AstroKit starter template"
+			description="Suspendisse consectetuer vulputate hac feugiat sociosqu egestas mattis nullam. Accumsan proin euismod dapibus dui vestibulum porttitor curabitur libero condimentum gravida magna."
+		/>
+
+		<div class="flex gap-4">
+			<a href="https://ui.shadcn.com" target="_blank" rel="noreferrer" class={buttonVariants()}>
+				Documentation
+			</a>
+			<a
+				href="https://github.com/AREA44/astro-shadcn-ui-template"
+				target="_blank"
+				rel="noreferrer"
+				class={buttonVariants({ variant: 'outline' })}
+			>
+				GitHub
+			</a>
+
+			<Button>Hello World</Button>
+
+			<Button>Hello World</Button>
+
+			<Button
+				asChild
+				variant="secondary"
+				size={'lg'}
+				className={buttonVariants({ variant: 'secondary' })}
+			>
+				<a href="https://github.com/AREA44/astro-shadcn-ui-template">GitHub</a>
+			</Button>
+		</div>
+	</Section>
+	<!-- <Section>
+    <Hero intent={'background'} />
+  </Section> -->
 </Layout>

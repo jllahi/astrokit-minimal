@@ -1,0 +1,66 @@
+---
+import { SITE } from '@/data/config'
+import { getDay, getMonth } from '@/utils/content'
+import type { HTMLAttributes } from 'astro/types'
+import { getImage } from 'astro:assets'
+import { getEntry, type CollectionEntry } from 'astro:content'
+import ImageKit from './embed/ImageKit.astro'
+import {
+	Card as CardUI,
+	CardContent,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from '@/components/ui/card'
+
+const { post, featured, ...props } = Astro.props
+
+const relatedCategory = await getEntry(post.data.category)
+---
+
+<CardUI>
+	<CardHeader>
+		<CardTitle>
+			<a
+				href={`/${SITE.urls.posts}/${post.slug}`}
+				class="font-heading text-pretty text-2xl font-bold leading-7 tracking-tight text-foreground hover:underline"
+			>
+				{post.data.title}
+				{
+					post.data.draft && (
+						<span class="bg-color-error mx-2 rounded bg-destructive p-1 text-xs uppercase text-destructive-foreground">
+							Draft
+						</span>
+					)
+				}
+			</a>
+		</CardTitle>
+		<!-- <CardDescription>{post.data.description}</CardDescription> -->
+	</CardHeader>
+	<CardContent>
+		<a href={`/${SITE.urls.posts}/${post.slug}`} aria-label={post.data.title}>
+			<ImageKit
+				src={post.data.image}
+				alt={post.data.title}
+				loading="eager"
+				transition:name={`image-${post.slug}`}
+			/>
+		</a>
+	</CardContent>
+	<!-- <CardFooter>
+		<a
+			href={`/${SITE.urls.posts}/${post.slug}`}
+			class="font-heading text-pretty text-2xl font-bold leading-7 tracking-tight text-foreground hover:underline"
+		>
+			{post.data.title}
+			{
+				post.data.draft && (
+					<span class="bg-color-error mx-2 rounded bg-destructive p-1 text-xs uppercase text-destructive-foreground">
+						Draft
+					</span>
+				)
+			}
+		</a>
+	</CardFooter> -->
+</CardUI>
