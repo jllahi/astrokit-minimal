@@ -1,0 +1,39 @@
+---
+// https://docs.astro.build/en/core-concepts/routing/#pagination
+// https://docs.astro.build/en/reference/api-reference/#paginate
+
+import type { Page } from 'astro'
+import { Icon } from 'astro-icon/components'
+import type { CollectionEntry } from 'astro:content'
+import { buttonVariants } from '@/components/ui/button'
+
+interface Props {
+	page: Page<CollectionEntry<'posts'>>
+}
+
+const { page } = Astro.props
+---
+
+<div class="flex w-full flex-row justify-between">
+	{
+		page.url.prev && (
+			<a class={buttonVariants({ variant: 'outline' })} href={page.url.prev} rel="prev">
+				<Icon name="ri:arrow-left-double-fill" title="Newer" class="align-center inline size-6" />{' '}
+				Newer
+			</a>
+		)
+	}
+	<div>
+		{
+			// page.currentPage
+		}
+	</div>
+	{
+		page.url.next && (
+			<a class={buttonVariants({ variant: 'outline' })} href={page.url.next} rel="next">
+				Older{' '}
+				<Icon name="ri:arrow-right-double-fill" title="Older" class="align-center inline size-6" />
+			</a>
+		)
+	}
+</div>

@@ -1,0 +1,55 @@
+---
+import { buttonVariants } from '@/components/ui/button'
+import { ModeToggle } from '@/components/theme/ModeToggle'
+import { SITE } from '@/data/config'
+import MenuMobile from './MenuMobile'
+import { cn } from '@/lib/utils'
+import MenuDesktop from './MenuDesktop.astro'
+// import { Icon } from 'astro-icon/components'
+---
+
+<header
+	class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+>
+	<div class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+		<div class="flex w-full gap-6 md:gap-8">
+			<a href="/" class="flex items-center space-x-2">
+				<span class="inline-block text-xl font-black uppercase">{SITE.title}</span>
+			</a>
+			<MenuDesktop />
+			<!-- <nav class="hidden md:block">
+				<a href="/about" class={buttonVariants({ variant: 'ghost' })}> About </a>
+				<a href="/heroes" class={buttonVariants({ variant: 'ghost' })}> Hero </a>
+				<a href="/colors" class={buttonVariants({ variant: 'ghost' })}> Colors </a>
+				<a href="/posts" class={buttonVariants({ variant: 'ghost' })}> Posts </a>
+			</nav> -->
+			<div class="flex flex-1 items-center justify-end space-x-4">
+				<nav class="flex items-center gap-2 space-x-1">
+					<a
+						href="https://github.com/AREA44/astro-shadcn-ui-template"
+						target="_blank"
+						rel="noreferrer"
+						class={cn(buttonVariants({ variant: 'ghost' }), 'hidden md:block')}
+					>
+						GitHub
+					</a>
+					<!-- <ThemeToggle /> -->
+					<ModeToggle client:load />
+
+					<div class="block md:hidden">
+						<MenuMobile client:load />
+						<!-- <a
+							href="https://github.com/AREA44/astro-shadcn-ui-template"
+							target="_blank"
+							rel="noreferrer"
+							class={buttonVariants({ variant: 'outline' })}
+						>
+							Menu{' '}
+							<Icon name="heroicons:bars-3-bottom-right" class="align-center ml-2 inline size-6" />
+						</a> -->
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>

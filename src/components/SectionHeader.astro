@@ -1,0 +1,23 @@
+---
+// import Title from './Title.astro'
+interface Props {
+	title: string
+	description?: string
+}
+const { title, description } = Astro.props
+---
+
+<header class="flex max-w-[980px] flex-col items-start gap-2">
+	<h1
+		class="font-heading text-pretty text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl"
+	>
+		{title}
+	</h1>
+	{
+		description && (
+			<p class="max-w-[700px] text-pretty text-lg font-light text-muted-foreground">
+				{description}
+			</p>
+		)
+	}
+</header>

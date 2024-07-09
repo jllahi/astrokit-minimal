@@ -1,10 +1,13 @@
 ---
-import SampleImage from '@/components/SampleImage.astro'
+import Description from '@/components/global/Description.astro'
+import H1 from '@/components/global/H1.astro'
+import Section from '@/components/global/Section.astro'
 import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout seo={{ title: '404' }}>
-	<main class="flex-grow">
-		<SampleImage alt="A cat trying to catch a fish-shaped cloud." />
-	</main>
+	<Section>
+		<H1>Error 404</H1>
+		<Description>Page not found</Description>
+	</Section>
 </Layout>

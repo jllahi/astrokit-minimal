@@ -1,12 +1,13 @@
 ---
-// import SampleImage from '@/components/SampleImage.astro'
-// import ButtonTV from '@/components/ButtonTV.astro'
-import { SITE } from '@/data/config'
+import Description from '@/components/global/Description.astro'
+import H1 from '@/components/global/H1.astro'
+import Section from '@/components/global/Section.astro'
+import siteConfig from '@/data/config'
 import Layout from '@/layouts/Layout.astro'
-// import { cn } from '@/utils'
 ---
 
 <Layout>
+<<<<<<< HEAD
   <section class="flex h-full items-center justify-center">
     <h1 class="text-6xl font-black text-color-accent-800 dark:text-color-accent-300">
       {SITE.title}
@@ -22,4 +23,10 @@ import Layout from '@/layouts/Layout.astro'
     <!-- <ButtonTV>ButtonTV</ButtonTV> -->
     <!-- <SampleImage alt="A cat trying to catch a fish-shaped cloud." /> -->
   </section>
+=======
+	<Section>
+		<H1>{siteConfig.title}</H1>
+		<Description>{siteConfig.description}</Description>
+	</Section>
+>>>>>>> main
 </Layout>

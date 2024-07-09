@@ -1,0 +1,44 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { tv, type VariantProps } from 'tailwind-variants'
+
+export const link = tv({
+	base: 'font-logo place-content-center p-1 uppercase transition-all duration-300 ease-in-out',
+	variants: {
+		intent: {
+			outline: 'border border-black text-black hover:bg-black hover:text-white',
+			primary: [
+				'border border-black text-black hover:bg-black hover:text-white',
+				'dark:border-color-white dark:hover:bg-color-white border dark:text-white dark:hover:text-black',
+			],
+			inverted: [
+				'bg-color-black hover:bg-color-white text-color-white hover:text-color-black border border-black',
+				'dark:border-color-white dark:bg-color-white dark:hover:bg-color-black dark:text-color-black dark:hover:text-color-white',
+			],
+			tag: [
+				'border-color-black bg-color-white hover:bg-color-black border px-2 text-black no-underline hover:text-white',
+				'dark:border-color-white dark:bg-color-black dark:hover:bg-color-white dark:text-white dark:hover:text-black',
+			],
+		},
+		size: {
+			sm: 'px-2 pb-1 text-xs font-bold',
+			md: 'gap-2 px-3 py-2 text-lg',
+			lg: 'gap-4 px-4 py-3 text-xl',
+		},
+	},
+	defaultVariants: {
+		size: 'md',
+		intent: 'primary',
+	},
+	// compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }]
+})
+
+// const { size = 'md', style = 'primary', block, class: className, ...rest } = Astro.props
+export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof link> {}
+
+const { intent, size, class: className, ...rest } = Astro.props
+---
+
+<a class={link({ intent, size, className })} data-name="ui-link" {...rest}>
+	<slot />
+</a>

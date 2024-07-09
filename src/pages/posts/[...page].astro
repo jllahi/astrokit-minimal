@@ -1,0 +1,29 @@
+---
+// https://docs.astro.build/en/guides/content-collections/#generating-routes-from-content
+import PostList from '@/components/content/PostList.astro'
+import Section from '@/components/Section.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
+import DataDump from '@/components/utils/DataDump.astro'
+import Pagination from '@/components/utils/Pagination.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getStaticPosts as getStaticPaths } from '@/utils/paths/getStaticPosts'
+import type { Page } from 'astro'
+import { Debug } from 'astro:components'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+	page: Page<CollectionEntry<'posts'>>
+}
+export { getStaticPaths }
+const { page } = Astro.props
+---
+
+<Layout seo={{ title: 'Posts', description: 'Collection of posts' }}>
+	<Section>
+		<SectionHeader title="The Blog." description="Everything you need to know about websites" />
+		<PostList posts={page.data} />
+		<Pagination {page} />
+	</Section>
+
+	{import.meta.env.DEV && <Debug data={page} />}
+</Layout>

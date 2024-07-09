@@ -1,0 +1,82 @@
+---
+import Accordion from '@/components/Accordion'
+import Hero from '@/components/Hero.astro'
+import Section from '@/components/Section.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
+import { Separator } from '@/components/ui/separator'
+import Layout from '@/layouts/Layout.astro'
+// import 'aos/dist/aos.css'
+---
+
+<Layout seo={{ title: 'Sections' }}>
+	<Section class={'animate-in slide-in-from-top-44 duration-700'}>
+		<SectionHeader
+			title="This is the Sections page."
+			description="Accessible and customizable components that you can copy and paste into your webs."
+		/>
+	</Section>
+
+	<Section intent={'full'}>
+		<SectionHeader
+			title="This is the Heroes page."
+			description="Everything you need to know about websites"
+		/>
+		<Hero intent={'background'} />
+	</Section>
+
+	<Separator />
+
+	<Section
+		intent={'full'}
+		class="delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0"
+		data-taos-offset="400"
+	>
+		<SectionHeader
+			title="This is the FAQ page."
+			description="Everything you need to know about websites"
+		/>
+		<Accordion client:load />
+	</Section>
+
+	<Separator />
+
+	<Section
+		intent={'full'}
+		class="delay-[400ms] duration-[1400ms] taos:translate-y-[200px] taos:opacity-0"
+		data-taos-offset="300"
+	>
+		<SectionHeader
+			title="This is the Heroes page."
+			description="Everything you need to know about websites"
+		/>
+		<Hero intent={'background'} />
+	</Section>
+
+	<Separator />
+
+	<Section intent={'full'} class="reveal">
+		<SectionHeader
+			title="This is the FAQ page."
+			description="Everything you need to know about websites"
+		/>
+		<Accordion client:load />
+	</Section>
+
+	<Separator />
+
+	<Section intent={'full'} class="reveal">
+		<SectionHeader
+			title="This is the Heroes page."
+			description="Everything you need to know about websites"
+		/>
+		<Hero intent={'background'} />
+	</Section>
+
+	<Separator />
+
+	<Separator />
+	<!-- <script>
+		import AOS from 'aos'
+		AOS.init()
+	</script> -->
+</Layout>

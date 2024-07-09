@@ -1,57 +1,53 @@
 ---
 import '@fontsource-variable/inter'
+import '@/assets/styles/global.css'
+
 import { ViewTransitions } from 'astro:transitions'
 import { type Props as SEOProps, SEO } from 'astro-seo'
-import TailwindIndicator from '@/components/TailwindIndicator.astro'
-import ThemeIcon from '@/components/theme/ThemeIcon.astro'
+import TailwindIndicator from '@/components/theme/TailwindIndicator.astro'
 import ThemeInit from '@/components/theme/ThemeInit.astro'
-import { SITE } from '@/data/config'
+import siteConfig from '@/data/config'
+import Header from '@/components/global/Header.astro'
+import Footer from '@/components/global/Footer.astro'
 
 interface Props {
-  seo?: SEOProps
+	seo?: SEOProps
 }
 
 const { seo } = Astro.props
 ---
 
+<script data-astro-rerun src="/theme.js"></script>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <SEO
-      title={seo?.title || SITE.title}
-      description={seo?.description || SITE.description}
-      openGraph={{
-        basic: {
-          title: seo?.title || SITE.title,
-          type: 'website', // https://ogp.me/#types
-          image: SITE.image || '/open-graph.jpg',
-        },
-      }}
-      {...seo}
-    />
-    <ThemeInit />
-    <ViewTransitions />
-  </head>
-  <body
-    class:list={[
-      'p-layout-border flex h-svh flex-col transition-all duration-300',
-      'bg-color-bg-light text-color-black',
-      'dark:bg-color-bg-dark dark:text-color-white',
-    ]}
-  >
-    <header class="p-layout-main flex w-full flex-row justify-between">
-      <a href="/"><h2 class="text-2xl font-black">{SITE.title}</h2></a>
-      <ThemeIcon />
-    </header>
-    <main class="p-layout-main flex-grow">
-      <slot />
-    </main>
-    <footer class="p-layout-main">
-      <small>{Astro.generator}</small>
-      <TailwindIndicator align="right" />
-    </footer>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<SEO
+			titleTemplate={`%s | ${siteConfig.title}`}
+			title={seo?.title ?? Astro.generator}
+			description={seo?.description ?? siteConfig.description}
+			openGraph={{
+				basic: {
+					title: seo?.title || siteConfig.title,
+					type: 'website', // https://ogp.me/#types
+					image: siteConfig.opengraph.image || '/open-graph.jpg',
+				},
+			}}
+			{...seo}
+		/>
+		<ViewTransitions />
+		<script>
+			document.documentElement.classList.add('js')
+		</script>
+	</head>
+	<body class:list={['flex h-screen flex-col transition-all duration-300']}>
+		<Header />
+		<main class="flex-grow p-4">
+			<slot />
+		</main>
+		<Footer />
+		<TailwindIndicator align="right" />
+	</body>
 </html>
