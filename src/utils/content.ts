@@ -1,4 +1,4 @@
-import { SITE } from '@/data/config'
+import { siteConfig } from '@/data/config'
 import { getCollection, type CollectionEntry } from 'astro:content'
 
 // export function filterContent<items>(
@@ -32,7 +32,8 @@ export function filterContent(
 	// sortByDate or randomize
 	if (sortByDate) {
 		filteredContent.sort(
-			(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+			(a, b) =>
+				new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 		)
 	} else {
 		filteredContent.sort(() => Math.random() - 0.5)
@@ -47,7 +48,7 @@ export function filterContent(
 }
 
 export function formatDate(date: string | number | Date) {
-	return new Date(date).toLocaleDateString(SITE.language, {
+	return new Date(date).toLocaleDateString(siteConfig.language, {
 		timeZone: 'UTC',
 		year: 'numeric',
 		month: 'numeric',
@@ -55,13 +56,13 @@ export function formatDate(date: string | number | Date) {
 	})
 }
 export function getDay(date: string | number | Date) {
-	return new Date(date).toLocaleDateString(SITE.language, {
+	return new Date(date).toLocaleDateString(siteConfig.language, {
 		timeZone: 'UTC',
 		day: 'numeric',
 	})
 }
 export function getMonth(date: string | number | Date) {
-	return new Date(date).toLocaleDateString(SITE.language, {
+	return new Date(date).toLocaleDateString(siteConfig.language, {
 		timeZone: 'UTC',
 		month: 'short',
 	})

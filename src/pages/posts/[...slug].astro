@@ -10,7 +10,7 @@ import Article from '@/components/Article.astro'
 import DataDump from '@/components/utils/DataDump.astro'
 import DateFormat from '@/components/utils/DateFormat.astro'
 import SocialShare from '@/components/utils/SocialShare.astro'
-import { SITE } from '@/data/config'
+import { siteConfig } from '@/data/config'
 import Layout from '@/layouts/Layout.astro'
 import postFilter from '@/utils/postFilter'
 import Section from '@/components/Section.astro'
@@ -42,7 +42,7 @@ const category = await getEntry(post.data.category)
 <Layout
 	seo={{
 		title: post.data.title,
-		description: post.data.description ?? SITE.description,
+		description: post.data.description ?? siteConfig.description,
 		openGraph: {
 			basic: {
 				title: post.data.title,
@@ -54,7 +54,10 @@ const category = await getEntry(post.data.category)
 >
 	<Section>
 		<Article>
-			<SectionHeader title={post.data.title} description={post.data.description} />
+			<SectionHeader
+				title={post.data.title}
+				description={post.data.description}
+			/>
 			<ImageKit
 				src={post.data.image}
 				alt={post.data.title}
@@ -86,7 +89,11 @@ const category = await getEntry(post.data.category)
 
 			<div class="mt-2 flex w-full flex-row justify-between">
 				<LikeButton slug={post.slug} client:load />
-				<SocialShare description={post.data.description} title={post.data.title} via={SITE.title} />
+				<SocialShare
+					description={post.data.description}
+					title={post.data.title}
+					via={siteConfig.title}
+				/>
 			</div>
 		</Article>
 	</Section>

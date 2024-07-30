@@ -15,7 +15,9 @@ const linkVariants = cva('', {
 })
 
 // const { size = 'md', style = 'primary', block, class: className, ...rest } = Astro.props
-export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof linkVariants> {
+export interface Props
+	extends HTMLAttributes<'a'>,
+		VariantProps<typeof linkVariants> {
 	className?: string
 }
 
@@ -26,7 +28,7 @@ const { class: className, href, ...rest } = Astro.props
 <a
 	class={cn(linkVariants({ intent: 'outline' }), className)}
 	data-name="ui-link"
-	href={href}
+	{href}
 	{...rest}
 >
 	<slot />

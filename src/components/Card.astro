@@ -1,5 +1,5 @@
 ---
-import { SITE } from '@/data/config'
+import { siteConfig } from '@/data/config'
 import { getDay, getMonth } from '@/utils/content'
 import type { HTMLAttributes } from 'astro/types'
 import { getImage } from 'astro:assets'
@@ -23,7 +23,7 @@ const relatedCategory = await getEntry(post.data.category)
 	<CardHeader>
 		<CardTitle>
 			<a
-				href={`/${SITE.urls.posts}/${post.slug}`}
+				href={`/${siteConfig.urls.posts}/${post.slug}`}
 				class="font-heading text-pretty text-2xl font-bold leading-7 tracking-tight text-foreground hover:underline"
 			>
 				{post.data.title}
@@ -39,7 +39,10 @@ const relatedCategory = await getEntry(post.data.category)
 		<!-- <CardDescription>{post.data.description}</CardDescription> -->
 	</CardHeader>
 	<CardContent>
-		<a href={`/${SITE.urls.posts}/${post.slug}`} aria-label={post.data.title}>
+		<a
+			href={`/${siteConfig.urls.posts}/${post.slug}`}
+			aria-label={post.data.title}
+		>
 			<ImageKit
 				src={post.data.image}
 				alt={post.data.title}
@@ -50,7 +53,7 @@ const relatedCategory = await getEntry(post.data.category)
 	</CardContent>
 	<!-- <CardFooter>
 		<a
-			href={`/${SITE.urls.posts}/${post.slug}`}
+			href={`/${siteConfig.urls.posts}/${post.slug}`}
 			class="font-heading text-pretty text-2xl font-bold leading-7 tracking-tight text-foreground hover:underline"
 		>
 			{post.data.title}

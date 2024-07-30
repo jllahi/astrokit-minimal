@@ -1,4 +1,4 @@
-import { SITE } from '@/data/config'
+import { siteConfig } from '@/data/config'
 import { filterContent } from '@/utils/content'
 import postFilter from '@/utils/postFilter'
 import type { GetStaticPaths } from 'astro'
@@ -8,5 +8,5 @@ export const getStaticPosts: GetStaticPaths = async ({ paginate }) => {
 	const posts = (await getCollection('posts')).filter(postFilter)
 	const filteredPosts = filterContent(posts)
 
-	return paginate(filteredPosts, { pageSize: SITE.pagination })
+	return paginate(filteredPosts, { pageSize: siteConfig.pagination })
 }

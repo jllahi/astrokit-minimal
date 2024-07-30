@@ -1,6 +1,6 @@
 ---
 import Link from '@/components/Link.astro'
-import { SITE } from '@/data/config'
+import { siteConfig } from '@/data/config'
 import type { Tag } from '@/utils/getUniqueTags.ts.txt'
 import { slugifyStr } from '@/utils/slugify'
 import type { HTMLAttributes } from 'astro/types'
@@ -43,7 +43,7 @@ const { tags, intent, size, class: className, ...rest } = Astro.props
           <Link
             size={size}
             intent={intent}
-            href={`/${SITE.urls.tags}/${typeof tag === 'string' ? slugifyStr(tag) : tag.tag}`}
+            href={`/${siteConfig.urls.tags}/${typeof tag === 'string' ? slugifyStr(tag) : tag.tag}`}
             class="leading-10"
           >
             #&nbsp;{typeof tag === 'string' ? tag : tag.tagName}

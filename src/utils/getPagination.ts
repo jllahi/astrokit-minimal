@@ -1,4 +1,4 @@
-import { SITE } from '@/data/config'
+import { siteConfig } from '@/data/config'
 import getPageNumbers from '@/utils/getPageNumbers'
 
 interface GetPaginationProps<T> {
@@ -7,7 +7,11 @@ interface GetPaginationProps<T> {
 	isIndex?: boolean
 }
 
-const getPagination = <T>({ posts, page, isIndex = false }: GetPaginationProps<T[]>) => {
+const getPagination = <T>({
+	posts,
+	page,
+	isIndex = false,
+}: GetPaginationProps<T[]>) => {
 	const totalPagesArray = getPageNumbers(posts.length)
 	const totalPages = totalPagesArray.length
 
@@ -17,8 +21,10 @@ const getPagination = <T>({ posts, page, isIndex = false }: GetPaginationProps<T
 			? Number(page)
 			: 0
 
-	const lastPost = isIndex ? SITE.pagination : currentPage * SITE.pagination
-	const startPost = isIndex ? 0 : lastPost - SITE.pagination
+	const lastPost = isIndex
+		? siteConfig.pagination
+		: currentPage * siteConfig.pagination
+	const startPost = isIndex ? 0 : lastPost - siteConfig.pagination
 	const paginatedPosts = posts.slice(startPost, lastPost)
 
 	return {

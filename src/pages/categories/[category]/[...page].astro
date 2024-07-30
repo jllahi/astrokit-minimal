@@ -5,7 +5,7 @@ import Divider from '@/components/Divider.astro'
 import Section from '@/components/Section.astro'
 import SectionHeader from '@/components/SectionHeader.astro'
 import Pagination from '@/components/utils/Pagination.astro'
-import { SITE } from '@/data/config'
+import { siteConfig } from '@/data/config'
 import Layout from '@/layouts/Layout.astro'
 import getPostsByCategory from '@/utils/getPostsByCategory'
 import type { GetStaticPaths, Page } from 'astro'
@@ -31,7 +31,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 				categoryName: category.data.title,
 				categoryDescription: category.data.description,
 			},
-			pageSize: SITE.pagination,
+			pageSize: siteConfig.pagination,
 		})
 	})
 }

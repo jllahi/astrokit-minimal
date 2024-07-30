@@ -1,7 +1,7 @@
 ---
 import { buttonVariants } from '@/components/ui/button'
 import { ModeToggle } from '@/components/theme/ModeToggle'
-import { SITE } from '@/data/config'
+import { siteConfig } from '@/data/config'
 import MenuMobile from './MenuMobile'
 import { cn } from '@/lib/utils'
 import MenuDesktop from './MenuDesktop.astro'
@@ -11,10 +11,14 @@ import MenuDesktop from './MenuDesktop.astro'
 <header
 	class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
 >
-	<div class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+	<div
+		class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0"
+	>
 		<div class="flex w-full gap-6 md:gap-8">
 			<a href="/" class="flex items-center space-x-2">
-				<span class="inline-block text-xl font-black uppercase">{SITE.title}</span>
+				<span class="inline-block text-xl font-black uppercase"
+					>{siteConfig.title}</span
+				>
 			</a>
 			<MenuDesktop />
 			<!-- <nav class="hidden md:block">

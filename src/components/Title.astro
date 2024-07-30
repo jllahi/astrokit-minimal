@@ -11,7 +11,9 @@ export const titleVariants = cva('', {
 	},
 })
 
-export interface Props extends HTMLAttributes<'h1'>, VariantProps<typeof titleVariants> {
+export interface Props
+	extends HTMLAttributes<'h1'>,
+		VariantProps<typeof titleVariants> {
 	title: string
 }
 

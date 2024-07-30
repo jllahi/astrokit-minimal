@@ -13,12 +13,11 @@ export default defineConfig({
 		icon({
 			iconDir: 'src/assets/icons',
 			include: {
-				heroicons: ['sun', 'moon'],
+				heroicons: ['moon', 'sun', 'bars-3-bottom-right'],
+				'simple-icons': ['astro', 'react', 'tailwindcss'],
 			},
 		}),
-		debugcss(),
 		metaTags(),
-		AstroDevtoolbarTailwind(),
 	],
 	// vite: {
 	// 	plugins: [mkcert()],

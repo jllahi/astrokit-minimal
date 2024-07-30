@@ -23,7 +23,7 @@ const posts = defineCollection({
 			// tags: z.array(z.string()).default([]),optional(),
 			draft: z.boolean().optional(),
 			featured: z.boolean().optional(),
-			// author: z.string().default(SITE.author),
+			// author: z.string().default(siteConfig.author),
 			// reading: z.string().optional()
 		}),
 })
@@ -48,7 +48,7 @@ const pages = defineCollection({
 			// categories: reference("categories"),
 			// tags: z.array(reference("tags")).optional(),
 			draft: z.boolean().optional(),
-			// author: z.string().default(SITE.author),
+			// author: z.string().default(siteConfig.author),
 		}),
 })
 
@@ -105,4 +105,4 @@ const categories = defineCollection({
 //   }),
 // })
 
-export const collections = { posts, pages, categories }
+// export const collections = { posts, pages, categories }

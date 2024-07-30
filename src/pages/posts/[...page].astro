@@ -20,7 +20,10 @@ const { page } = Astro.props
 
 <Layout seo={{ title: 'Posts', description: 'Collection of posts' }}>
 	<Section>
-		<SectionHeader title="The Blog." description="Everything you need to know about websites" />
+		<SectionHeader
+			title="The Blog."
+			description="Everything you need to know about websites"
+		/>
 		<PostList posts={page.data} />
 		<Pagination {page} />
 	</Section>

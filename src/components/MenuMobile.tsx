@@ -1,5 +1,11 @@
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { SITE } from '@/data/config'
+import {
+	Sheet,
+	SheetContent,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from '@/components/ui/sheet'
+import { siteConfig } from '@/data/config'
 import { navMenu } from '@/data/navigation'
 import { cn } from '@/lib/utils'
 import { AlignRight } from 'lucide-react'
@@ -20,8 +26,10 @@ export default function MenuMobile() {
 			</SheetTrigger>
 			<SheetContent className="w-full">
 				<SheetHeader className="text-left">
-					<SheetTitle className="text-base font-black uppercase">{SITE.title}</SheetTitle>
-					{/* <SheetDescription className="w-3/4">{SITE.description}</SheetDescription> */}
+					<SheetTitle className="text-base font-black uppercase">
+						{siteConfig.title}
+					</SheetTitle>
+					{/* <SheetDescription className="w-3/4">{siteConfig.description}</SheetDescription> */}
 				</SheetHeader>
 				<Separator className="mt-4" />
 				{navMenu && navMenu.mainNav && (
@@ -34,7 +42,10 @@ export default function MenuMobile() {
 											{/* <Button asChild variant="ghost"> */}
 											<a
 												href={item.href}
-												className={cn(buttonVariants({ variant: 'link' }), 'px-0')}
+												className={cn(
+													buttonVariants({ variant: 'link' }),
+													'px-0'
+												)}
 											>
 												{item.title}
 											</a>
