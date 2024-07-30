@@ -14,7 +14,7 @@ interface Props {
 	seo?: SEOProps
 }
 
-const { seo } = Astro.props
+const { seo } = Astro.props as Props
 ---
 
 <script data-astro-rerun src="/theme.js"></script>
